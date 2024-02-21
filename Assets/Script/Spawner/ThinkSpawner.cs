@@ -6,16 +6,22 @@ public class ThinkSpawner : MonoBehaviour
 {
     #region ATTRIBUTS
 
+    [Header("Spawn Time")]
     [SerializeField] private float _spawnTimer = 1;
     [SerializeField] private float _currentTimer = 0;
 
-    [SerializeField] private GameObject[] _thinkSpawn = null;
+    [Header("Spawn Object")]
+    [SerializeField] private AThinkingBubble[] _thinkSpawn = null;
     [SerializeField] private Transform _thinkContainer = null;
 
+    [Header("Spawn Location")]
     [SerializeField] private float _minSpawnDistance = 0;
     [SerializeField] private float _maxSpawnDistance = 0;
-    [SerializeField] private Vector2 _spawnPosition = Vector2.zero;
 
+    private Vector2 _spawnPosition = Vector2.zero;
+
+    [Header("Init")]
+    [SerializeField] GameObject _focusPoint = null;
 
     #endregion ATTRIBUTS
 
@@ -51,7 +57,8 @@ public class ThinkSpawner : MonoBehaviour
     {
         int randomSpawn = Random.Range(0, _thinkSpawn.Length);
 
-        Instantiate(_thinkSpawn[randomSpawn], _spawnPosition, _thinkContainer.rotation, _thinkContainer);
+        AThinkingBubble newThink = Instantiate(_thinkSpawn[randomSpawn], _spawnPosition, Quaternion.identity, _thinkContainer);
+        newThink.Init(_focusPoint);
     }
 
     public void UpdateTimer()
