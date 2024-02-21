@@ -116,6 +116,7 @@ GameObject:
   - component: {fileID: 6051887838939668964}
   - component: {fileID: -2873998812359685133}
   - component: {fileID: 1697739278299867428}
+  - component: {fileID: -893938144648586684}
   m_Layer: 0
   m_Name: ThinkingBubbleSquare
   m_TagString: Untagged
@@ -161,7 +162,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -183,3 +184,18 @@ MonoBehaviour:
   _focusPosition: {fileID: 0}
   _acceleration: 1
   _maxSpeed: 10
+--- !u!114 &-893938144648586684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8978708608280828442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91c3dcc2f1367d843af1d74bccdb0ce4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 1
+  segments: 20
+  _tinkingBubble: {fileID: 1697739278299867428}

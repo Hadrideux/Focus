@@ -17,6 +17,8 @@ public abstract class AThinkingBubble : MonoBehaviour
 
     public ETypeThink TypeThink => _typeThink;
 
+    public GameObject FocusPosition => _focusPosition;
+
     #endregion PROPERTIES
     
     #region METHODES

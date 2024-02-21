@@ -39,16 +39,6 @@ public class ThinkSpawner : MonoBehaviour
         UpdateTimer();
     }
 
-    void OnDrawGizmosSelected()
-    {
-        //Dessiner des gizmos représentant les zones de spawn
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, _minSpawnDistance);
-
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, _maxSpawnDistance);
-    }
-
     #endregion MONO
 
     #region METHODES
