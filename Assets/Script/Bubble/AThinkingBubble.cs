@@ -6,7 +6,7 @@ public abstract class AThinkingBubble : MonoBehaviour
 {
     #region ATTRIBUTS
 
-    protected ETypeThink _typeThink = ETypeThink.NONE;
+    [SerializeField] protected ETypeThink _typeThink = ETypeThink.NONE;
     [SerializeField] protected float _thinkSpeed = 0;
     [SerializeField] protected GameObject _focusPosition = null;
 
