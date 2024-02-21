@@ -7,6 +7,8 @@ public class ThinkingBubbleController : AThinkingBubble
 
     #region Attributs
 
+
+
     #endregion Attributs
 
     #region Mono

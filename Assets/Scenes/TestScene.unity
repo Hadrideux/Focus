@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _thinkSpeed: 10
-  _focusPosition: {fileID: 0}
+  _focusPosition: {fileID: 1440029420}
 --- !u!1 &997054965
 GameObject:
   m_ObjectHideFlags: 0
