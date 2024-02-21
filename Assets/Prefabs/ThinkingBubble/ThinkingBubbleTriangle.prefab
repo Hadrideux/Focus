@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8512465581888202152}
-  - component: {fileID: 6780227550926550542}
+  - component: {fileID: 27524346947588817}
   m_Layer: 0
   m_Name: ThinkingBubbleTriangle
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   - {fileID: 5659538788261891091}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6780227550926550542
+--- !u!114 &27524346947588817
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,11 +42,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1403384135615029261}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 024267b122e304144b692098ce57ffe0, type: 3}
+  m_Script: {fileID: 11500000, guid: f1c7bffa65d6e3b47b8114d731d43f03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _typeThink: 3
-  _thinkSpeed: 10
+  _thinkSpeed: 0
   _focusPosition: {fileID: 0}
 --- !u!1 &2981177781953849283
 GameObject:
