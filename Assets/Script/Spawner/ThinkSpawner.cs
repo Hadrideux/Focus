@@ -41,7 +41,7 @@ public class ThinkSpawner : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
-        // Dessiner des gizmos pour représenter les rayons de spawn dans l'éditeur Unity
+        //Dessiner des gizmos représentant les zones de spawn
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, _minSpawnDistance);
 
@@ -53,6 +53,7 @@ public class ThinkSpawner : MonoBehaviour
 
     #region METHODES
 
+    //Spawn une nouvelle bulle de penser
     public void NewSapwn()
     {
         int randomSpawn = Random.Range(0, _thinkSpawn.Length);
@@ -61,6 +62,7 @@ public class ThinkSpawner : MonoBehaviour
         newThink.Init(_focusPoint);
     }
 
+    //Incrémenté le compteur de spawn
     public void UpdateTimer()
     {
         _currentTimer += Time.deltaTime;
@@ -73,18 +75,13 @@ public class ThinkSpawner : MonoBehaviour
         }
     }
 
+    //Choisie un point de spawn dans la zone de spawn autorisé
     public void SpawnPosition()
     {
-        //float randomDistance = Random.Range(_minSpawnDistance, _maxSpawnDistance);
-        
         Vector2 randomDirection = Random.insideUnitCircle * (_maxSpawnDistance - _minSpawnDistance);
         randomDirection = randomDirection + randomDirection.normalized * _minSpawnDistance;
 
         _spawnPosition = randomDirection;
-        
-        //transform.position + new Vector3(randomDirection.x, 0, randomDirection.y) * randomDistance
-        //float radius = Random.Range(_minSpawnDistance, _maxSpawnDistance);
-        //Vector2 randomSpawnLocation = Random.insideUnitCircle * radius ;
     }
 
     #endregion METHODES

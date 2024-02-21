@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 106282742}
   - component: {fileID: 106282741}
   - component: {fileID: 106282740}
+  - component: {fileID: 106282743}
   m_Layer: 0
   m_Name: Shield_South
   m_TagString: Untagged
@@ -152,7 +153,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 0.5, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 292732674}
@@ -172,12 +173,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.15, y: 0.5, z: 0.15}
+  m_Center: {x: 0, y: -0.75, z: 0}
 --- !u!23 &106282741
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -228,6 +229,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 106282738}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &106282743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106282738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c1065dadb895cf479825ce18aac32a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &292732672
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,6 +250,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 292732674}
+  - component: {fileID: 292732675}
   - component: {fileID: 292732673}
   m_Layer: 0
   m_Name: CenterShield
@@ -259,7 +273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speedRotation: 200
   _rotationTarget: {x: 0, y: 0, z: 0}
-  _speedAlpha: 0.688
+  _speedAlpha: 1
 --- !u!4 &292732674
 Transform:
   m_ObjectHideFlags: 0
@@ -279,6 +293,41 @@ Transform:
   - {fileID: 106282739}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &292732675
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292732672}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 4.75
 --- !u!1 &353973015
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,6 +371,7 @@ GameObject:
   - component: {fileID: 404754974}
   - component: {fileID: 404754973}
   - component: {fileID: 404754972}
+  - component: {fileID: 404754975}
   m_Layer: 0
   m_Name: Shield_East
   m_TagString: Untagged
@@ -339,7 +389,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 3, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 292732674}
@@ -359,12 +409,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.5, y: 1.15, z: 0.15}
+  m_Center: {x: 0.75, y: 0, z: 0}
 --- !u!23 &404754973
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -415,6 +465,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 404754970}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &404754975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404754970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c1065dadb895cf479825ce18aac32a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &703115301
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,7 +515,6 @@ MonoBehaviour:
   _thinkContainer: {fileID: 353973016}
   _minSpawnDistance: 15
   _maxSpawnDistance: 30
-  _spawnPosition: {x: 0, y: 0}
   _focusPoint: {fileID: 1262992496}
 --- !u!4 &703115303
 Transform:
@@ -650,7 +711,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -20}
+  m_LocalPosition: {x: 0, y: 1, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -699,6 +760,7 @@ GameObject:
   - component: {fileID: 1521117527}
   - component: {fileID: 1521117526}
   - component: {fileID: 1521117525}
+  - component: {fileID: 1521117528}
   m_Layer: 0
   m_Name: Shield_North
   m_TagString: Untagged
@@ -716,7 +778,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 0.5, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 292732674}
@@ -736,12 +798,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.15, y: 0.5, z: 0.15}
+  m_Center: {x: 0, y: 0.75, z: 0}
 --- !u!23 &1521117526
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -792,6 +854,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1521117523}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1521117528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521117523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c1065dadb895cf479825ce18aac32a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1538916698
 GameObject:
   m_ObjectHideFlags: 0
@@ -804,6 +878,7 @@ GameObject:
   - component: {fileID: 1538916702}
   - component: {fileID: 1538916701}
   - component: {fileID: 1538916700}
+  - component: {fileID: 1538916703}
   m_Layer: 0
   m_Name: Shield_West
   m_TagString: Untagged
@@ -821,7 +896,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 3, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 292732674}
@@ -841,12 +916,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.5, y: 1.15, z: 0.15}
+  m_Center: {x: -0.75, y: 0, z: 0}
 --- !u!23 &1538916701
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -897,6 +972,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1538916698}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1538916703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538916698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c1065dadb895cf479825ce18aac32a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
