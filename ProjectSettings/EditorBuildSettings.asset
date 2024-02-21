@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenuScene.unity
+    guid: c20deb9407122dc42b7a8ffd92e544d1
+  - enabled: 1
+    path: Assets/Scenes/PomodoroScene.unity
+    guid: 6e69fe420bde2a446b28b1d8478736e6
   m_configObjects: {}
