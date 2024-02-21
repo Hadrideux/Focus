@@ -630,6 +630,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1958279556}
     m_Modifications:
+    - target: {fileID: 27524346947588817, guid: 31938045f5cb8c44e9ba0fe57ec43e96, type: 3}
+      propertyPath: _thinkSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 27524346947588817, guid: 31938045f5cb8c44e9ba0fe57ec43e96, type: 3}
+      propertyPath: _stepDistance
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 27524346947588817, guid: 31938045f5cb8c44e9ba0fe57ec43e96, type: 3}
+      propertyPath: _focusPosition
+      value: 
+      objectReference: {fileID: 1958279555}
+    - target: {fileID: 27524346947588817, guid: 31938045f5cb8c44e9ba0fe57ec43e96, type: 3}
+      propertyPath: _teleportDelay
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1403384135615029261, guid: 31938045f5cb8c44e9ba0fe57ec43e96, type: 3}
       propertyPath: m_Name
       value: ThinkingBubbleTriangle
@@ -691,6 +707,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1958279556}
     m_Modifications:
+    - target: {fileID: 1697739278299867428, guid: 4b121d1fa5676f0429b9d7b78f875420, type: 3}
+      propertyPath: _maxSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697739278299867428, guid: 4b121d1fa5676f0429b9d7b78f875420, type: 3}
+      propertyPath: _thinkSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697739278299867428, guid: 4b121d1fa5676f0429b9d7b78f875420, type: 3}
+      propertyPath: _acceleration
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697739278299867428, guid: 4b121d1fa5676f0429b9d7b78f875420, type: 3}
+      propertyPath: _focusPosition
+      value: 
+      objectReference: {fileID: 1440029420}
     - target: {fileID: 6051887838939668964, guid: 4b121d1fa5676f0429b9d7b78f875420, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.39

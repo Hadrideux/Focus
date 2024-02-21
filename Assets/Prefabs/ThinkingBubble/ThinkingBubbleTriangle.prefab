@@ -46,8 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _typeThink: 3
-  _thinkSpeed: 0
+  _thinkSpeed: 2
   _focusPosition: {fileID: 0}
+  _teleportDelay: 2
 --- !u!1 &2981177781953849283
 GameObject:
   m_ObjectHideFlags: 0
