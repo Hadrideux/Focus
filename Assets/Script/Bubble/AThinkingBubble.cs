@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,11 +13,17 @@ public abstract class AThinkingBubble : MonoBehaviour
 
     #endregion ATTRIBUTS
 
-    #region METHODE
+    #region PROPERTIES
+
+    public ETypeThink TypeThink => _typeThink;
+
+    #endregion PROPERTIES
+    
+    #region METHODES
     public abstract void UpdatePosition();
 
     public abstract void Init(GameObject target);
 
-    #endregion METHODE
+    #endregion METHODES
 
 }
