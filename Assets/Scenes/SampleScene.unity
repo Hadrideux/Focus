@@ -930,6 +930,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1262992496}
     - target: {fileID: 27524346947588817, guid: 31938045f5cb8c44e9ba0fe57ec43e96, type: 3}
+      propertyPath: _teleportDelay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 27524346947588817, guid: 31938045f5cb8c44e9ba0fe57ec43e96, type: 3}
       propertyPath: _maxSpawnDistance
       value: 5
       objectReference: {fileID: 0}
@@ -943,11 +947,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8512465581888202152, guid: 31938045f5cb8c44e9ba0fe57ec43e96, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.900955
+      value: -19.5
       objectReference: {fileID: 0}
     - target: {fileID: 8512465581888202152, guid: 31938045f5cb8c44e9ba0fe57ec43e96, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.8390403
+      value: -7.35
       objectReference: {fileID: 0}
     - target: {fileID: 8512465581888202152, guid: 31938045f5cb8c44e9ba0fe57ec43e96, type: 3}
       propertyPath: m_LocalPosition.z
