@@ -26,9 +26,10 @@ public class ThinkingBubbleController : AThinkingBubble
     #endregion Mono
 
     #region Methodes
+
     public override void Init(GameObject target)
     {
-
+        _focusPosition = target;
     }
 
     public override void UpdatePosition()
