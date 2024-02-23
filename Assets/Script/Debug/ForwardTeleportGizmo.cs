@@ -15,10 +15,10 @@ public class ForwardTeleportGizmo : MonoBehaviour
         Gizmos.color = Color.yellow;
         Vector3 center = transform.position;
 
-        Vector3 _direction = (_tinkingBubble.FocusPosition.transform.position - center).normalized;
+        Vector3 direction = (_tinkingBubble.FocusPosition.transform.position - center).normalized;
 
         // Déterminer la rotation à appliquer au demi-cercle
-        Quaternion rotation = Quaternion.LookRotation(_direction);
+        Quaternion rotation = Quaternion.LookRotation(direction);
 
         // Calculer le vecteur initial en utilisant la rotation
         Vector3 initialVector = rotation * Vector3.right * radius;

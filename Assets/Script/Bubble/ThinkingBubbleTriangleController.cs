@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class ThinkingBubbleTriangleController : AThinkingBubble
@@ -6,9 +7,8 @@ public class ThinkingBubbleTriangleController : AThinkingBubble
     #region Attributs
 
     [SerializeField] private float _teleportDelay = 0f;
-    [SerializeField] private float _stepDistance = 1f;
 
-    [SerializeField] private float radius = 1f;
+    [SerializeField] private float _teleportRadius = 1f;
 
     #endregion Attributs
 
@@ -18,8 +18,6 @@ public class ThinkingBubbleTriangleController : AThinkingBubble
     void Start()
     {
         StartCoroutine(TeleportRoutine());
-
-        Debug.Log(Vector3.Distance(transform.position, _focusPosition.transform.position));
     }
 
     void Update()
@@ -29,7 +27,7 @@ public class ThinkingBubbleTriangleController : AThinkingBubble
 
     IEnumerator TeleportRoutine()
     {
-        while (Vector3.Distance(transform.position, _focusPosition.transform.position) > _stepDistance) 
+        while (Vector3.Distance(transform.position, _focusPosition.transform.position) > _teleportRadius) 
         {
             yield return new WaitForSeconds(_teleportDelay);
             TeleportStepwise();
@@ -52,27 +50,17 @@ public class ThinkingBubbleTriangleController : AThinkingBubble
 
     private void TeleportStepwise()
     {
-        Vector3 currentPosition = transform.position;
 
-        // Calculer un angle aléatoire dans le demi-cercle
-        float angle = Random.Range(0f, Mathf.PI); // L'angle est dans la plage de 0 à PI pour un demi-cercle
+        // Déterminer la direction à appliquer au demi-cercle de téléportation
+        Vector3 direction = (FocusPosition.transform.position - transform.position).normalized;
 
-        // Calculer les coordonnées du point dans le demi-cercle
-        float x = Mathf.Cos(angle) * radius;
-        float y = Mathf.Sin(angle) * radius;
+        // Calculer un angle aléatoire dans le demi-cercle de téléportation
+        float angle = Random.Range(-90, 90); // L'angle est dans la plage de 0 à PI pour un demi-cercle
 
-        Debug.Log("x : " + x + " et y : " + y);
+        direction = (Quaternion.Euler(0, 0, angle) * direction).normalized;
 
-        Vector3 teleportPoint = new Vector2(x, y);
-
-        transform.position = currentPosition + teleportPoint;
+        transform.position += direction * _teleportRadius;
     }
    
     #endregion Methodes
 }
-
-/*
-   Vector3 direction = (_focusPosition.transform.position - currentPosition).normalized;
-   Quaternion rotation = Quaternion.LookRotation(direction);
-   Vector3 initialVector = rotation * Vector3.right * radius;
-*/

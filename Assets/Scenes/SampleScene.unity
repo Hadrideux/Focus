@@ -922,9 +922,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8927923818414329014, guid: 31938045f5cb8c44e9ba0fe57ec43e96, type: 3}
+      propertyPath: radius
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8927923818414329014, guid: 31938045f5cb8c44e9ba0fe57ec43e96, type: 3}
       propertyPath: _focusPosition
       value: 
       objectReference: {fileID: 1262992496}
+    - target: {fileID: 27524346947588817, guid: 31938045f5cb8c44e9ba0fe57ec43e96, type: 3}
+      propertyPath: _stepDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 27524346947588817, guid: 31938045f5cb8c44e9ba0fe57ec43e96, type: 3}
       propertyPath: _focusPosition
       value: 
@@ -947,11 +955,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8512465581888202152, guid: 31938045f5cb8c44e9ba0fe57ec43e96, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.5
+      value: -13.47
       objectReference: {fileID: 0}
     - target: {fileID: 8512465581888202152, guid: 31938045f5cb8c44e9ba0fe57ec43e96, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.35
+      value: -5.28
       objectReference: {fileID: 0}
     - target: {fileID: 8512465581888202152, guid: 31938045f5cb8c44e9ba0fe57ec43e96, type: 3}
       propertyPath: m_LocalPosition.z
