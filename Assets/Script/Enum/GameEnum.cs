@@ -8,3 +8,10 @@ public enum ETypeThink
     TRIANGLE,
 }
 
+public enum EGamePhase
+{
+    NONE,
+    POMODORO,
+    REPOS,
+}
+

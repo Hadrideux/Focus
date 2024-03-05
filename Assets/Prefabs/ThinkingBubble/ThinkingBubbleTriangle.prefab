@@ -78,9 +78,8 @@ MonoBehaviour:
   _typeThink: 3
   _thinkSpeed: 2
   _focusPosition: {fileID: 0}
-  _teleportDelay: 2
-  _stepDistance: 1
-  radius: 5
+  _teleportDelay: 1
+  _teleportRadius: 1
 --- !u!114 &-8927923818414329014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91c3dcc2f1367d843af1d74bccdb0ce4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 2.5
+  radius: 1
   segments: 20
   _tinkingBubble: {fileID: 27524346947588817}
 --- !u!65 &768480701356370292

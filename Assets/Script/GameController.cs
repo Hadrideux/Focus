@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    [SerializeField] private EGamePhase _gamePhase = EGamePhase.NONE;
 
     // Start is called before the first frame update
     void Start()
