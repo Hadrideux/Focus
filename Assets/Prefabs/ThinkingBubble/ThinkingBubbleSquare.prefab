@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: -2873998812359685133}
   - component: {fileID: 1697739278299867428}
   - component: {fileID: -893938144648586684}
+  - component: {fileID: 691920991526178361}
   m_Layer: 0
   m_Name: ThinkingBubbleSquare
   m_TagString: Untagged
@@ -199,3 +200,24 @@ MonoBehaviour:
   radius: 1
   segments: 20
   _tinkingBubble: {fileID: 1697739278299867428}
+--- !u!65 &691920991526178361
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8978708608280828442}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
