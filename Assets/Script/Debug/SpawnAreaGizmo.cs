@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class SpawnAreaGizmo : MonoBehaviour
 {
-    [Header("Spawn Location")]
-    [SerializeField] private float _minSpawnDistance = 0;
-    [SerializeField] private float _maxSpawnDistance = 0;
+    [SerializeField] private ThinkSpawner _spawnSpawner = null;
 
     void OnDrawGizmosSelected()
     {
         //Dessiner des gizmos représentant les zones de spawn
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, _minSpawnDistance);
+        Gizmos.DrawWireSphere(transform.position, _spawnSpawner.SpawnDistanceMin);
 
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, _maxSpawnDistance);
+        Gizmos.DrawWireSphere(transform.position, _spawnSpawner.SpawnDistanceMax);
     }
 }

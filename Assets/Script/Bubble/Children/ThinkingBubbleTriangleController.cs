@@ -12,7 +12,11 @@ public class ThinkingBubbleTriangleController : AThinkingBubble
 
     #endregion Attributs
 
-    
+    #region PROPERTIES
+    public float TeleportRadius => _teleportRadius;
+
+    #endregion PROPERTIES
+
     #region Mono
 
     void Start()
