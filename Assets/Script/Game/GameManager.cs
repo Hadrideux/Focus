@@ -7,10 +7,13 @@ public class GameManager : Singleton<GameManager>
 {
     #region ATTRIBUTS
 
+    [Header("Game Phase")]
     [SerializeField] private EGamePhase _currentGamePhase = EGamePhase.NONE;
 
+    [Header("Score Phase")]
     [SerializeField] private int _scoreThink = 0;
 
+    [Header("Timer Phase")]
     [SerializeField] private float _timerPomodoro = 0;
     [SerializeField] private float _timerRepos = 0;
 

@@ -59,16 +59,12 @@ public class TimerController : MonoBehaviour
         switch (GameManager.Instance.CurrentGamePhase)
         {
             case EGamePhase.POMODORO:
-                
-                GameManager.Instance.CurrentGamePhase = EGamePhase.REPOS;
                 _timerPhase = GameManager.Instance.TimerRepos;
                 
                 Debug.Log(GameManager.Instance.CurrentGamePhase);
                 break;
 
             case EGamePhase.REPOS:
-                
-                GameManager.Instance.CurrentGamePhase = EGamePhase.POMODORO;
                 _timerPhase = GameManager.Instance.TimerPomodoro;
 
                 Debug.Log(GameManager.Instance.CurrentGamePhase);
