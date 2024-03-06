@@ -183,6 +183,7 @@ MonoBehaviour:
   _typeThink: 1
   _thinkSpeed: 0
   _focusPosition: {fileID: 0}
+  _rb: {fileID: -2873998812359685133}
   _acceleration: 1
   _maxSpeed: 10
 --- !u!114 &-893938144648586684
@@ -197,9 +198,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91c3dcc2f1367d843af1d74bccdb0ce4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 1
   segments: 20
-  _tinkingBubble: {fileID: 1697739278299867428}
+  _thinkingBubbleTriangleController: {fileID: 0}
 --- !u!65 &691920991526178361
 BoxCollider:
   m_ObjectHideFlags: 0

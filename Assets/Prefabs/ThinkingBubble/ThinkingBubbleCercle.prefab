@@ -78,6 +78,11 @@ MonoBehaviour:
   _typeThink: 2
   _thinkSpeed: 10
   _focusPosition: {fileID: 0}
+  _rb: {fileID: 2088714286024524540}
+  _delay: 0.3
+  _rotationSpeed: 10
+  _minRotationRand: 80
+  _maxRotationRand: 80
 --- !u!114 &-2280767172365690932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,9 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91c3dcc2f1367d843af1d74bccdb0ce4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 1
   segments: 20
-  _tinkingBubble: {fileID: 4149600788096079298}
+  _thinkingBubbleTriangleController: {fileID: 0}
 --- !u!65 &2121512138219411824
 BoxCollider:
   m_ObjectHideFlags: 0

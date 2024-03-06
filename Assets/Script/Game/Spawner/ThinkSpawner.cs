@@ -21,7 +21,7 @@ public class ThinkSpawner : MonoBehaviour
     private Vector2 _spawnPosition = Vector2.zero;
 
     [Header("Init")]
-    [SerializeField] GameObject _focusPoint = null;
+    [SerializeField] Transform _focusPoint = null;
 
     #endregion ATTRIBUTS
 

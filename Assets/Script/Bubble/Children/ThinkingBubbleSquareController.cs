@@ -30,21 +30,22 @@ public class ThinkingBubbleSquareController : AThinkingBubble
 
     #region Methodes
 
-    public override void Init(GameObject target)
+    public override void Init(Transform target)
     {
         _focusPosition = target;
     }
 
-    public override void UpdatePosition()
+    public void UpdatePosition()
     {
-        transform.position = Vector3.MoveTowards(transform.position, _focusPosition.transform.position, _thinkSpeed * Time.deltaTime);
+        Vector3 dir = (_focusPosition.position - transform.position).normalized;
+        _rb.velocity = dir * _thinkSpeed;
     }
 
     private void Acceleration()
     {
         _thinkSpeed += _acceleration * Time.deltaTime;
-        _thinkSpeed = Mathf.Min(_thinkSpeed, _maxSpeed );
-        transform.Translate(_focusPosition.transform.position.normalized * _thinkSpeed * Time.deltaTime);
+        _thinkSpeed = Mathf.Min(_thinkSpeed, _maxSpeed);
+        //transform.Translate(_focusPosition.transform.position.normalized * _thinkSpeed * Time.deltaTime);
         
     }
 

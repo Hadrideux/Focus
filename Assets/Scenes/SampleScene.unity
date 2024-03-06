@@ -283,7 +283,7 @@ MonoBehaviour:
   _thinkContainer: {fileID: 353973016}
   _minSpawnDistance: 20
   _maxSpawnDistance: 40
-  _focusPoint: {fileID: 1262992496}
+  _focusPoint: {fileID: 1262992497}
 --- !u!114 &475720921
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,7 +9,8 @@ public abstract class AThinkingBubble : MonoBehaviour
 
     [SerializeField] protected ETypeThink _typeThink = ETypeThink.NONE;
     [SerializeField] protected float _thinkSpeed = 0;
-    [SerializeField] protected GameObject _focusPosition = null;
+    [SerializeField] protected Transform _focusPosition = null;
+    [SerializeField] protected Rigidbody _rb = null;
 
     #endregion ATTRIBUTS
 
@@ -17,14 +18,15 @@ public abstract class AThinkingBubble : MonoBehaviour
 
     public ETypeThink TypeThink => _typeThink;
 
-    public GameObject FocusPosition => _focusPosition;
+    public Transform FocusPosition => _focusPosition;
+
+    public Rigidbody Rigidbody => _rb;
 
     #endregion PROPERTIES
     
     #region METHODES
-    public abstract void UpdatePosition();
 
-    public abstract void Init(GameObject target);
+    public abstract void Init(Transform target);
 
     #endregion METHODES
 

@@ -78,6 +78,7 @@ MonoBehaviour:
   _typeThink: 3
   _thinkSpeed: 2
   _focusPosition: {fileID: 0}
+  _rb: {fileID: -440654437628477365}
   _teleportDelay: 1
   _teleportRadius: 2
 --- !u!114 &-8927923818414329014

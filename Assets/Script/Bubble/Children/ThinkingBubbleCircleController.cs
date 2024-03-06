@@ -6,91 +6,62 @@ public class ThinkingBubbleCircleController : AThinkingBubble
 {
 
     #region Attributs
+    [SerializeField] private float _delay = 2f;
+    [SerializeField] private float _rotationSpeed = 5.0f;
+    [SerializeField] private float _minRotationRand = 40;
+    [SerializeField] private float _maxRotationRand = 80;
 
-    [Header("Zigzag")]
-    [SerializeField] private Vector3 zigzagDirection;
-    [SerializeField] private float zigzagTimer;
-    [SerializeField] private float zigzagChangeTime = 1.0f; // Temps en secondes avant de changer de direction
-    [SerializeField] private float zigzagMagnitude = 1.0f; // Amplitude du zigzag
-    [SerializeField] private float ZigZagRadius = 1.0f;
-
- 
-
+    private float _timeStamp = 0;
+    private Vector3 _dir = Vector3.zero;
     #endregion Attributs
 
     #region Mono
 
     void Start()
     {
-        StartCoroutine(ZigZagRoutine());
-        zigzagTimer = zigzagChangeTime;
-        // Initialiser la direction du zigzag vers la droite (ou gauche)
-        zigzagDirection = Vector3.right; // ou Vector3.left selon votre préférence
-    }
-
-    void Update()
-    {
-        UpdatePosition();
-
-        zigzagTimer -= Time.deltaTime;
-
-        if (zigzagTimer <= 0)
-        {
-            // Changer la direction du zigzag
-            zigzagDirection = -zigzagDirection;
-            zigzagTimer = zigzagChangeTime;
-        }
-
-       
-
-    }
-
-    IEnumerator ZigZagRoutine()
-    {
-        while (Vector3.Distance(transform.position, _focusPosition.transform.position) > ZigZagRadius)
-        {
-            yield return new WaitForSeconds(zigzagChangeTime);
-
-            Debug.Log("Change");
-
-            // Changer la direction du zigzag
-            zigzagDirection = -zigzagDirection;
-
-            ZigZagMovement();
-        }
+        transform.forward = _dir = (_focusPosition.position - transform.position).normalized;
+        ChangeDir();
     }
 
     #endregion Mono
 
     #region Methodes
 
-    public override void Init(GameObject target)
+    void Update()
+    {
+        UpdatePosition();
+
+        _timeStamp += Time.deltaTime;
+        if (_timeStamp >= _delay)
+        {
+            _timeStamp = 0;
+            ChangeDir();
+        }
+
+        transform.forward = Vector3.RotateTowards(transform.forward, _dir, _rotationSpeed * Time.deltaTime, 0.0f);
+    }
+
+    public override void Init(Transform target)
     {
         _focusPosition = target;
     }
 
-    public override void UpdatePosition()
+    public void UpdatePosition()
     {
-        transform.position = Vector3.MoveTowards(transform.position, _focusPosition.transform.position, _thinkSpeed * Time.deltaTime);
+        
+        _rb.velocity = transform.forward * _thinkSpeed;
     }
 
-
-    private void ZigZagMovement()
+    private void ChangeDir()
     {
-        // Déterminer la direction à appliquer au demi-cercle de zigzag
-        Vector3 direction = (FocusPosition.transform.position - transform.position).normalized;
-
-        // Calculer un angle aléatoire dans le demi-cercle de téléportation
-        float angle = Random.Range(-90, 90); // L'angle est dans la plage de 0 à PI pour un demi-cercle
-
-        direction = (Quaternion.Euler(0, 0, angle) * direction).normalized;
-
-        //transform.position += direction;
-        // Ajouter le mouvement en zigzag à votre logique de déplacement existante
-        Vector3 zigzagMove = zigzagDirection * zigzagMagnitude;
-        transform.position += zigzagMove * Time.deltaTime;
+        _dir = (_focusPosition.position - transform.position).normalized;
+        _dir = Quaternion.Euler(0,0, Random.Range(-Rand(), Rand())) * _dir;
     }
 
+    private float Rand()
+    {
+        return Random.Range(_minRotationRand, _maxRotationRand);
+    }
 
 
 
