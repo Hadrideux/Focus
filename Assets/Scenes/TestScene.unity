@@ -468,8 +468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timerText: {fileID: 103029563}
-  _startTime: 0
-  _timerIsRunning: 1
+  _timerPhase: 60
 --- !u!4 &312414924 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6051887838939668964, guid: 4b121d1fa5676f0429b9d7b78f875420, type: 3}
@@ -963,11 +962,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3338525669755774721, guid: 1105dc2b78c85a64bb7a6fbd8412f6d1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.068551
+      value: -16.29
       objectReference: {fileID: 0}
     - target: {fileID: 3338525669755774721, guid: 1105dc2b78c85a64bb7a6fbd8412f6d1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.7720983
+      value: 10.16
       objectReference: {fileID: 0}
     - target: {fileID: 3338525669755774721, guid: 1105dc2b78c85a64bb7a6fbd8412f6d1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1002,14 +1001,27 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4149600788096079298, guid: 1105dc2b78c85a64bb7a6fbd8412f6d1, type: 3}
+      propertyPath: _thinkSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4149600788096079298, guid: 1105dc2b78c85a64bb7a6fbd8412f6d1, type: 3}
       propertyPath: _focusPosition
       value: 
       objectReference: {fileID: 1440029420}
+    - target: {fileID: 4149600788096079298, guid: 1105dc2b78c85a64bb7a6fbd8412f6d1, type: 3}
+      propertyPath: zigzagMagnitude
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4149600788096079298, guid: 1105dc2b78c85a64bb7a6fbd8412f6d1, type: 3}
+      propertyPath: zigzagChangeTime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7231327244271206887, guid: 1105dc2b78c85a64bb7a6fbd8412f6d1, type: 3}
       propertyPath: m_Name
       value: ThinkingBubbleCercle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2280767172365690932, guid: 1105dc2b78c85a64bb7a6fbd8412f6d1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1037,6 +1049,10 @@ PrefabInstance:
     - target: {fileID: 27524346947588817, guid: 31938045f5cb8c44e9ba0fe57ec43e96, type: 3}
       propertyPath: _teleportDelay
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 27524346947588817, guid: 31938045f5cb8c44e9ba0fe57ec43e96, type: 3}
+      propertyPath: _teleportRadius
+      value: 1.74
       objectReference: {fileID: 0}
     - target: {fileID: 1403384135615029261, guid: 31938045f5cb8c44e9ba0fe57ec43e96, type: 3}
       propertyPath: m_Name
