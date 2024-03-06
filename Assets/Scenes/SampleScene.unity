@@ -164,8 +164,8 @@ GameObject:
   m_Component:
   - component: {fileID: 475720917}
   - component: {fileID: 475720916}
-  - component: {fileID: 475720918}
   - component: {fileID: 475720920}
+  - component: {fileID: 475720918}
   - component: {fileID: 475720919}
   m_Layer: 0
   m_Name: GameController

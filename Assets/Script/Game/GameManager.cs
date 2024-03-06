@@ -5,12 +5,16 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
+    #region ATTRIBUTS
+
     [SerializeField] private EGamePhase _currentGamePhase = EGamePhase.NONE;
 
     [SerializeField] private int _scoreThink = 0;
 
     [SerializeField] private float _timerPomodoro = 0;
     [SerializeField] private float _timerRepos = 0;
+
+    #endregion ATTRIBUTS
 
     #region PROPERTIES
 

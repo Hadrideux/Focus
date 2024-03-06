@@ -8,14 +8,15 @@ using Unity.VisualScripting;
 
 public class TimerController : MonoBehaviour
 {
-    #region Attributs
+    #region ATTRIBUTS
 
     [SerializeField] private TextMeshProUGUI _timerText = null;
     [SerializeField] private float _timerPhase = 60f;
 
-    #endregion Attributs
+    #endregion ATTRIBUTS
 
-    #region Mono
+    #region MONO
+
     void Start()
     {
         _timerPhase = GameManager.Instance.TimerPomodoro;
@@ -26,9 +27,9 @@ public class TimerController : MonoBehaviour
     {
 
     }
-    #endregion Mono
+    #endregion MONO
 
-    #region Methodes
+    #region METHODES
 
     IEnumerator TimerCountdown(float duration)
     {
@@ -77,5 +78,5 @@ public class TimerController : MonoBehaviour
         StartCoroutine(TimerCountdown(_timerPhase));
     }
 
-    #endregion Methodes
+    #endregion METHODES
 }
