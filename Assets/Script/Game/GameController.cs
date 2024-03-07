@@ -2,7 +2,11 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    
+    #region ATTRIBUTS
+
+    #endregion ATTRIBUTS
+
+    #region MONO
 
     // Start is called before the first frame update
     void Start()
@@ -15,7 +19,11 @@ public class GameController : MonoBehaviour
         
     }
 
-    public void ChangePhase()
+    #endregion MONO
+
+    #region METHODES
+
+    public void ChangePhase(EGamePhase newPhase)
     {
        switch (GameManager.Instance.CurrentGamePhase)
        {
@@ -32,4 +40,6 @@ public class GameController : MonoBehaviour
                 break;
        }
     }
+
+    #endregion METHODES
 }

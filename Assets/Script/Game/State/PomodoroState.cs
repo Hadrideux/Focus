@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class PomodoroState : AGameState
 {
-    public override void Enter()
-    {
-        _gameController.ChangePhase();
-    }
-
-    public override void Exit()
-    {
-        
-    }
-
     public override void Init(GameController controller)
     {
        _gameController = controller;
     }
 
+    public override void Enter()
+    {
+
+    }
+
+    public override void Exit()
+    {
+
+    }
+
     public override void UpdateState()
     {
-        
+
     }
 }

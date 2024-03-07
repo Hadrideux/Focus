@@ -9,9 +9,13 @@ using Unity.VisualScripting;
 public class TimerController : MonoBehaviour
 {
     #region ATTRIBUTS
+    [Header("Controller")]
+    [SerializeField] private GameStateController _stateController = null;
 
+    [Header("Timer")]
     [SerializeField] private TextMeshProUGUI _timerText = null;
-    [SerializeField] private float _timerPhase = 60f;
+    [SerializeField] private float _phaseDelay = 0;
+    [SerializeField] private float _timeStamp = 0;
 
     #endregion ATTRIBUTS
 
@@ -19,60 +23,30 @@ public class TimerController : MonoBehaviour
 
     void Start()
     {
-        _timerPhase = GameManager.Instance.TimerPomodoro;
-        StartCoroutine(TimerCountdown(_timerPhase));
+        _phaseDelay = GameManager.Instance.TimerPomodoro;
     }
 
     void Update()
     {
+        _timeStamp += Time.deltaTime;
+        if (_timeStamp >= _phaseDelay)
+        {
+            _timeStamp = 0;
+            _stateController.ChangeState();
+            _phaseDelay = GameManager.Instance.CurrentDelay;
+        }
 
+        _timerText.text = FormatTime(_timeStamp);
     }
     #endregion MONO
 
     #region METHODES
-
-    IEnumerator TimerCountdown(float duration)
-    {
-        float TotalTime = duration;
-        while(TotalTime >= 0)
-        {
-            _timerText.text = FormatTime(TotalTime);
-
-            yield return new WaitForSeconds(1f);
-
-            TotalTime--;
-        }
-
-        TimerEnded();
-    }
-
-    string FormatTime(float time)
+   
+    static public string FormatTime(float time)
     {
         int minutes = (int)time / 60;
         int seconds = (int)time % 60;
         return string.Format("{0:00} : {1:00} ", minutes, seconds);
     }
-
-    private void TimerEnded()
-    {
-        Debug.Log("Timer Ended!");
-        switch (GameManager.Instance.CurrentGamePhase)
-        {
-            case EGamePhase.POMODORO:
-                _timerPhase = GameManager.Instance.TimerRepos;
-                
-                Debug.Log(GameManager.Instance.CurrentGamePhase);
-                break;
-
-            case EGamePhase.REPOS:
-                _timerPhase = GameManager.Instance.TimerPomodoro;
-
-                Debug.Log(GameManager.Instance.CurrentGamePhase);
-                break;
-        }
-
-        StartCoroutine(TimerCountdown(_timerPhase));
-    }
-
     #endregion METHODES
 }

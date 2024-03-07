@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using System;
 using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
@@ -30,5 +28,42 @@ public class GameManager : Singleton<GameManager>
     public float TimerPomodoro => _timerPomodoro;
     public float TimerRepos => _timerRepos;
 
+    public float CurrentDelay
+    {
+        get
+        {
+            if (CurrentGamePhase == EGamePhase.POMODORO)
+                return _timerPomodoro;
+            else
+                return _timerRepos;
+        }
+    }
+
     #endregion PROPERTIES
+
+    #region EVENTS
+
+    private event Action _onChangePhase = null;
+    public event Action OnChangePhase
+    {
+        add
+        {
+            _onChangePhase -= value;
+            _onChangePhase += value;
+        }
+        remove
+        {
+            _onChangePhase -= value;
+        }
+    }
+
+    #endregion EVENTS
+
+    public void TriggerPhaseChangeEvent()
+    {
+        if (_onChangePhase != null)
+        {
+            _onChangePhase();
+        }
+    }
 }
