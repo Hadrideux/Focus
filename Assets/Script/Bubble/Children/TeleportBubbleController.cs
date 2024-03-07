@@ -2,7 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class ThinkingBubbleTriangleController : AThinkingBubble
+public class TeleportBubbleController : AThinkingBubble
 {
     #region Attributs
 
@@ -29,6 +29,11 @@ public class ThinkingBubbleTriangleController : AThinkingBubble
         UpdatePosition();
     }
 
+    private void OnDestroy()
+    {
+        GameManager.Instance.OnChangePhase -= ChangeBehaviour;
+    }
+
     IEnumerator TeleportRoutine()
     {
         while (Vector3.Distance(transform.position, _focusPosition.transform.position) > _teleportRadius) 
@@ -45,6 +50,12 @@ public class ThinkingBubbleTriangleController : AThinkingBubble
     public override void Init(Transform target)
     {
         _focusPosition = target;
+        GameManager.Instance.OnChangePhase += ChangeBehaviour;
+    }
+
+    private void ChangeBehaviour()
+    {
+
     }
 
     public void UpdatePosition()
@@ -56,7 +67,7 @@ public class ThinkingBubbleTriangleController : AThinkingBubble
     private void TeleportStepwise()
     {
 
-        // Déterminer la direction à appliquer au demi-cercle de téléportation
+        // Déterminer la direction à appliquer au demi-cercle de téléportation        
         Vector3 direction = (FocusPosition.transform.position - transform.position).normalized;
 
         // Calculer un angle aléatoire dans le demi-cercle de téléportation

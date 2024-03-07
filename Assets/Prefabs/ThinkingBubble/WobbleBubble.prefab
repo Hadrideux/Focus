@@ -11,10 +11,9 @@ GameObject:
   - component: {fileID: 3338525669755774721}
   - component: {fileID: 2088714286024524540}
   - component: {fileID: 4149600788096079298}
-  - component: {fileID: -2280767172365690932}
   - component: {fileID: 2121512138219411824}
   m_Layer: 0
-  m_Name: ThinkingBubbleCercle
+  m_Name: WobbleBubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,20 +81,7 @@ MonoBehaviour:
   _delay: 0.5
   _rotationSpeed: 10
   _maxRotationRand: 60
---- !u!114 &-2280767172365690932
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7231327244271206887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91c3dcc2f1367d843af1d74bccdb0ce4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  segments: 20
-  _thinkingBubbleTriangleController: {fileID: 0}
+  _distanceThreshold: 2
 --- !u!65 &2121512138219411824
 BoxCollider:
   m_ObjectHideFlags: 0

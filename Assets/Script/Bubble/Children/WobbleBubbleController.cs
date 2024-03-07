@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ThinkingBubbleCircleController : AThinkingBubble
+public class WobbleBubbleController : AThinkingBubble
 {
 
     #region Attributs

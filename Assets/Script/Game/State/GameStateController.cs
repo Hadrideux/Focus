@@ -1,9 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.IO.LowLevel.Unsafe;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class GameStatController : MonoBehaviour
+public class GameStateController : MonoBehaviour
 {
     #region ATTRIBUTS
 
@@ -24,6 +23,7 @@ public class GameStatController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         _stateDic.Add(EGamePhase.POMODORO, new PomodoroState());
         _stateDic.Add(EGamePhase.REPOS, new ReposState());
 
@@ -39,6 +39,16 @@ public class GameStatController : MonoBehaviour
     {
         CurrentGameState.UpdateState();
     }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.OnChangePhase -= ChangeState;
+    }
+    private void OnApplicationQuit()
+    {
+        GameManager.Instance.OnChangePhase -= ChangeState;
+    }
+
     #endregion MONO
 
     #region METHODE
@@ -50,6 +60,29 @@ public class GameStatController : MonoBehaviour
         CurrentGameState.Exit();
         GameManager.Instance.CurrentGamePhase = nextState;
         CurrentGameState.Enter();
+    }
+
+    public void ChangeState()
+    {
+        EGamePhase nextState = EGamePhase.NONE;
+        
+        if (GameManager.Instance.CurrentGamePhase == EGamePhase.POMODORO)
+        {
+            nextState = EGamePhase.REPOS;
+        }
+        else
+        {
+            nextState = EGamePhase.POMODORO;
+        }
+
+        Debug.Log("Transition from : " + GameManager.Instance.CurrentGamePhase + " to " + nextState);
+
+        CurrentGameState.Exit();
+        GameManager.Instance.CurrentGamePhase = nextState;
+        CurrentGameState.Enter();
+
+        GameManager.Instance.TriggerPhaseChangeEvent();
+
     }
 
     #endregion METHODE

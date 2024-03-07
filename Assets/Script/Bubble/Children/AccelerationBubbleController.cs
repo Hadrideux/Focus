@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class ThinkingBubbleSquareController : AThinkingBubble
+public class AccelerationBubbleController : AThinkingBubble
 {
     #region Attributs
 
