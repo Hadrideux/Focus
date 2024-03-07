@@ -12,5 +12,6 @@ public class ScoreManager : Singleton<ScoreManager>
         return CharacterManager.Instance.GoodThinking.Count;
     }
 
+    //ScoreManager.Instance.ComputeScore();
 
 }

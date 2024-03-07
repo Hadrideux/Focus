@@ -24,6 +24,7 @@ public class CharacterController : MonoBehaviour
     {
         AThinkingBubble thinkingBubble = other.GetComponentInParent<AThinkingBubble>();
         FocusStability(thinkingBubble);
+        ScoreManager.Instance.ComputeScore();
     }
     public void OnTriggerExit(Collider other)
     {
