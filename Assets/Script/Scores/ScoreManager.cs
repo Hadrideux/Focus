@@ -7,10 +7,9 @@ public class ScoreManager : Singleton<ScoreManager>
 {
     [SerializeField] private int _score = 0;
     [SerializeField] private TextMeshProUGUI _text = null; //mettre dans le Score controller ? 
-    private void IncrementScore(int amount)
+    public float ComputeScore()
     {
-        _score += amount;
-        Debug.Log("Score actuel : " + _score);
+        return CharacterManager.Instance.GoodThinking.Count;
     }
 
 
