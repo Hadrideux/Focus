@@ -42,11 +42,17 @@ public class CharacterController : MonoBehaviour
             case true:
                 Debug.Log("Good Focus : Bubble : " + thinkBubble.TypeThink + "\nBad Focus : " + _currentFocus);
                 CharacterManager.Instance.GoodThinking.Add(thinkBubble);
+
                 break;
 
             case false:
                 Debug.Log("Bad Focus : Bubble : " + thinkBubble.TypeThink + "\nGood Focus : " + _currentFocus);
                 CharacterManager.Instance.BadThinking.Add(thinkBubble);
+                foreach (AThinkingBubble kvp in CharacterManager.Instance.BadThinking)
+                {
+                    CharacterManager.Instance.GoodThinking.Remove(kvp);
+                }
+
                 break;
 
         }
