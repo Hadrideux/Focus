@@ -61,12 +61,19 @@ public class TeleportBubbleController : AThinkingBubble
     public void UpdatePosition()
     {
         Vector3 dir = (_focusPosition.position - transform.position).normalized;
-        _rb.velocity = dir * _thinkSpeed;    
+
+        if (GameManager.Instance.CurrentGamePhase == EGamePhase.POMODORO)
+        {
+            _rb.velocity = dir * _thinkSpeed;
+        }
+        else if (GameManager.Instance.CurrentGamePhase == EGamePhase.REPOS)
+        {
+            _rb.velocity -= dir * _thinkSpeed;
+        }
     }
 
     private void TeleportStepwise()
     {
-
         // Déterminer la direction à appliquer au demi-cercle de téléportation        
         Vector3 direction = (FocusPosition.transform.position - transform.position).normalized;
 

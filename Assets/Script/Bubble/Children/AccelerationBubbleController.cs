@@ -8,8 +8,7 @@ public class AccelerationBubbleController : AThinkingBubble
     #region Attributs
 
     [SerializeField] private float _acceleration = 1f; 
-    [SerializeField] private float _maxSpeed = 10f; 
-
+    [SerializeField] private float _maxSpeed = 10f;
 
     #endregion Attributs
 
@@ -38,15 +37,22 @@ public class AccelerationBubbleController : AThinkingBubble
     public void UpdatePosition()
     {
         Vector3 dir = (_focusPosition.position - transform.position).normalized;
-        _rb.velocity = dir * _thinkSpeed;
+
+        if (GameManager.Instance.CurrentGamePhase == EGamePhase.POMODORO)
+        {            
+            _rb.velocity = dir * _thinkSpeed;
+        }
+        else if (GameManager.Instance.CurrentGamePhase == EGamePhase.REPOS)
+        {
+            _rb.velocity -= dir * _thinkSpeed;
+        }
+        
     }
 
     private void Acceleration()
     {
         _thinkSpeed += _acceleration * Time.deltaTime;
-        _thinkSpeed = Mathf.Min(_thinkSpeed, _maxSpeed);
-        //transform.Translate(_focusPosition.transform.position.normalized * _thinkSpeed * Time.deltaTime);
-        
+        _thinkSpeed = Mathf.Min(_thinkSpeed, _maxSpeed);        
     }
 
     #endregion Methodes
