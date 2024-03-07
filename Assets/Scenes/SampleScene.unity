@@ -219,7 +219,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d3e21ea4140d584b850645163901fa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stateController: {fileID: 0}
 --- !u!4 &475720917
 Transform:
   m_ObjectHideFlags: 0
@@ -249,7 +248,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stateController: {fileID: 1199189392}
   _timerText: {fileID: 1456028916}
-  _timerPhase: 0
+  _phaseDelay: 0
+  _timeStamp: 0
 --- !u!114 &475720919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,8 +275,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e688241e24e0f2429d91f8c25586049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnTimer: 1
-  _currentTimer: 0
+  _spawnDelay: 1
+  _timeStamp: 0
   _thinkSpawn:
   - {fileID: 4149600788096079298, guid: 1105dc2b78c85a64bb7a6fbd8412f6d1, type: 3}
   - {fileID: 1697739278299867428, guid: 4b121d1fa5676f0429b9d7b78f875420, type: 3}
@@ -775,11 +775,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 739595945}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -116, y: -96.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &1456028916
 MonoBehaviour:
   m_ObjectHideFlags: 0

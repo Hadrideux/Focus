@@ -22,24 +22,24 @@ public class GameController : MonoBehaviour
     #endregion MONO
 
     #region METHODES
-
+    /*
     public void ChangePhase(EGamePhase newPhase)
     {
        switch (GameManager.Instance.CurrentGamePhase)
        {
             case EGamePhase.POMODORO :
-                GameManager.Instance.CurrentGamePhase = EGamePhase.REPOS;
+                GameManager.Instance.CurrentGamePhase = EGamePhase.REST;
 
                 Debug.Log(GameManager.Instance.CurrentGamePhase);
                 break;
 
-            case EGamePhase.REPOS:
+            case EGamePhase.REST:
                 GameManager.Instance.CurrentGamePhase= EGamePhase.POMODORO;
 
                 Debug.Log(GameManager.Instance.CurrentGamePhase);
                 break;
        }
     }
-
+    */
     #endregion METHODES
 }

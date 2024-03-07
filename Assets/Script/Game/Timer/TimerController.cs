@@ -1,14 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
-using Unity.VisualScripting;
 
 public class TimerController : MonoBehaviour
 {
     #region ATTRIBUTS
+
     [Header("Controller")]
     [SerializeField] private GameStateController _stateController = null;
 
@@ -38,15 +34,18 @@ public class TimerController : MonoBehaviour
 
         _timerText.text = FormatTime(_timeStamp);
     }
+
     #endregion MONO
 
     #region METHODES
    
-    static public string FormatTime(float time)
+    private string FormatTime(float time)
     {
+        time = _phaseDelay - time;
         int minutes = (int)time / 60;
         int seconds = (int)time % 60;
         return string.Format("{0:00} : {1:00} ", minutes, seconds);
     }
+
     #endregion METHODES
 }

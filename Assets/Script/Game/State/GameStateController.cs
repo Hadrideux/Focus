@@ -25,7 +25,7 @@ public class GameStateController : MonoBehaviour
     {
 
         _stateDic.Add(EGamePhase.POMODORO, new PomodoroState());
-        _stateDic.Add(EGamePhase.REPOS, new ReposState());
+        _stateDic.Add(EGamePhase.REST, new ReposState());
 
         ChangeState(GameManager.Instance.CurrentGamePhase);
 
@@ -35,7 +35,7 @@ public class GameStateController : MonoBehaviour
         }
     }
 
-    public void Update()
+    void Update()
     {
         CurrentGameState.UpdateState();
     }
@@ -68,21 +68,16 @@ public class GameStateController : MonoBehaviour
         
         if (GameManager.Instance.CurrentGamePhase == EGamePhase.POMODORO)
         {
-            nextState = EGamePhase.REPOS;
+            nextState = EGamePhase.REST;
         }
         else
         {
             nextState = EGamePhase.POMODORO;
         }
-
-        Debug.Log("Transition from : " + GameManager.Instance.CurrentGamePhase + " to " + nextState);
-
-        CurrentGameState.Exit();
-        GameManager.Instance.CurrentGamePhase = nextState;
-        CurrentGameState.Enter();
+        
+        ChangeState(nextState);
 
         GameManager.Instance.TriggerPhaseChangeEvent();
-
     }
 
     #endregion METHODE
