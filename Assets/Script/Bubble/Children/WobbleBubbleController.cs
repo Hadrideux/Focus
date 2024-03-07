@@ -23,25 +23,27 @@ public class WobbleBubbleController : AThinkingBubble
         transform.forward = _dir = (_focusPosition.position - transform.position).normalized;
         ChangeDir();
     }
-
-    #endregion Mono
-
-    #region Methodes
-
     void Update()
     {
         UpdatePosition();
 
-        _timeStamp += Time.deltaTime;
-        if (_timeStamp >= _delay)
+        if(GameManager.Instance.CurrentGamePhase == EGamePhase.POMODORO)
         {
-            _timeStamp = 0;
-            _dirMult = -_dirMult;
-            ChangeDir();
-        }
+            _timeStamp += Time.deltaTime;
+            if (_timeStamp >= _delay)
+            {
+                _timeStamp = 0;
+                _dirMult = -_dirMult;
+                ChangeDir();
+            }
 
-        transform.forward = Vector3.RotateTowards(transform.forward, _dir, _rotationSpeed * Time.deltaTime, 0.0f);
+            transform.forward = Vector3.RotateTowards(transform.forward, _dir, _rotationSpeed * Time.deltaTime, 0.0f);
+        }
     }
+
+    #endregion Mono
+
+    #region Methodes
 
     public override void Init(Transform target)
     {
@@ -50,15 +52,30 @@ public class WobbleBubbleController : AThinkingBubble
 
     public void UpdatePosition()
     {
-        if (IsInCenter())
+        switch (GameManager.Instance.CurrentGamePhase)
         {
-            Vector3 dir = (_focusPosition.position - transform.position).normalized;
-            _rb.velocity = dir * _thinkSpeed;
-        }
-        else
-        {
-            _rb.velocity = transform.forward * _thinkSpeed;
-        }
+            case EGamePhase.POMODORO:
+                if (IsInCenter())
+                {
+                    Vector3 dir = (_focusPosition.position - transform.position).normalized;
+                    _rb.velocity = dir * _thinkSpeed;
+                }
+                else
+                {
+                    _rb.velocity = transform.forward * _thinkSpeed;
+                }
+
+                break;
+            case EGamePhase.REST:
+                _rb.velocity = _escapeDir * _thinkSpeed;
+
+                break;
+
+            case EGamePhase.INTERLUDE:
+                _rb.velocity = Vector3.zero;
+
+                break;
+        }        
     }
 
     private void ChangeDir()
@@ -71,6 +88,12 @@ public class WobbleBubbleController : AThinkingBubble
     {
         return Vector3.Distance(transform.position, _focusPosition.position) <= _distanceThreshold;
     }
+
+    public override void EscapeDirection()
+    {
+        _escapeDir = Quaternion.Euler(0, 0, Random.Range(0, 360)) * transform.position;
+    }
+
     #endregion Methodes
 
 }

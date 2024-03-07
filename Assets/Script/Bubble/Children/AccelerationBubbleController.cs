@@ -10,19 +10,19 @@ public class AccelerationBubbleController : AThinkingBubble
     [SerializeField] private float _acceleration = 1f; 
     [SerializeField] private float _maxSpeed = 10f;
 
+    private float _startSpeed = 0;
     #endregion Attributs
 
     #region Mono
 
     void Start()
     {
-
+        _startSpeed = _thinkSpeed;
     }
 
     void Update()
     {
-        UpdatePosition();
-        Acceleration();
+        UpdatePosition();        
     }
 
     #endregion Mono
@@ -36,17 +36,23 @@ public class AccelerationBubbleController : AThinkingBubble
 
     public void UpdatePosition()
     {
-        Vector3 dir = (_focusPosition.position - transform.position).normalized;
-
-        if (GameManager.Instance.CurrentGamePhase == EGamePhase.POMODORO)
-        {            
-            _rb.velocity = dir * _thinkSpeed;
-        }
-        else if (GameManager.Instance.CurrentGamePhase == EGamePhase.REPOS)
+        switch (GameManager.Instance.CurrentGamePhase)
         {
-            _rb.velocity -= dir * _thinkSpeed;
-        }
-        
+            case EGamePhase.POMODORO:
+                Vector3 dir = (_focusPosition.position - transform.position).normalized;
+                _rb.velocity = dir * _thinkSpeed;
+                Acceleration();
+
+                break;
+            case EGamePhase.REST:
+                _rb.velocity = _escapeDir * _thinkSpeed;
+
+                break;
+            case EGamePhase.INTERLUDE:
+                _rb.velocity = Vector3.zero;
+
+                break;
+        }        
     }
 
     private void Acceleration()
@@ -55,5 +61,10 @@ public class AccelerationBubbleController : AThinkingBubble
         _thinkSpeed = Mathf.Min(_thinkSpeed, _maxSpeed);        
     }
 
+    public override void EscapeDirection()
+    {
+        _thinkSpeed = _startSpeed;
+        _escapeDir = Quaternion.Euler(0, 0, Random.Range(0, 360)) * transform.position;
+    }
     #endregion Methodes
 }

@@ -3,15 +3,16 @@
 public enum ETypeThink
 {
     NONE,
-    SQUARE,
-    CIRCLE,
-    TRIANGLE,
+    WOBBLE,
+    TELEPORT,
+    ACCELERATION,
 }
 
 public enum EGamePhase
 {
     NONE,
     POMODORO,
-    REPOS,
+    REST,
+    INTERLUDE
 }
 

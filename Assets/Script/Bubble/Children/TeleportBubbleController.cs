@@ -29,11 +29,6 @@ public class TeleportBubbleController : AThinkingBubble
         UpdatePosition();
     }
 
-    private void OnDestroy()
-    {
-        GameManager.Instance.OnChangePhase -= ChangeBehaviour;
-    }
-
     IEnumerator TeleportRoutine()
     {
         while (Vector3.Distance(transform.position, _focusPosition.transform.position) > _teleportRadius) 
@@ -50,25 +45,25 @@ public class TeleportBubbleController : AThinkingBubble
     public override void Init(Transform target)
     {
         _focusPosition = target;
-        GameManager.Instance.OnChangePhase += ChangeBehaviour;
-    }
-
-    private void ChangeBehaviour()
-    {
-
     }
 
     public void UpdatePosition()
     {
-        Vector3 dir = (_focusPosition.position - transform.position).normalized;
+        switch (GameManager.Instance.CurrentGamePhase)
+        {
+            case EGamePhase.POMODORO:
+                Vector3 dir = (_focusPosition.position - transform.position).normalized;
+                _rb.velocity = dir * _thinkSpeed;
 
-        if (GameManager.Instance.CurrentGamePhase == EGamePhase.POMODORO)
-        {
-            _rb.velocity = dir * _thinkSpeed;
-        }
-        else if (GameManager.Instance.CurrentGamePhase == EGamePhase.REPOS)
-        {
-            _rb.velocity -= dir * _thinkSpeed;
+                break;
+            case EGamePhase.REST:
+                _rb.velocity = _escapeDir * _thinkSpeed;
+
+                break;
+            case EGamePhase.INTERLUDE:
+                _rb.velocity = Vector3.zero;
+
+                break;
         }
     }
 
@@ -85,5 +80,10 @@ public class TeleportBubbleController : AThinkingBubble
         transform.position += direction * _teleportRadius;
     }
    
+    public override void EscapeDirection()
+    {
+        _escapeDir = Quaternion.Euler(0, 0, Random.Range(0, 360)) * FocusPosition.transform.position;
+    }
+
     #endregion Methodes
 }

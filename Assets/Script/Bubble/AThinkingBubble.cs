@@ -7,10 +7,16 @@ public abstract class AThinkingBubble : MonoBehaviour
 {
     #region ATTRIBUTS
 
-    [SerializeField] protected ETypeThink _typeThink = ETypeThink.NONE;
-    [SerializeField] protected float _thinkSpeed = 0;
+    [Header("Init")]
     [SerializeField] protected Transform _focusPosition = null;
     [SerializeField] protected Rigidbody _rb = null;
+
+    [Header("Type")]
+    [SerializeField] protected ETypeThink _typeThink = ETypeThink.NONE;
+
+    [Header("Movement")]
+    [SerializeField] protected float _thinkSpeed = 0;
+    [SerializeField] protected Vector3 _escapeDir = Vector3.zero;
 
     #endregion ATTRIBUTS
 
@@ -20,13 +26,30 @@ public abstract class AThinkingBubble : MonoBehaviour
 
     public Transform FocusPosition => _focusPosition;
 
-    public Rigidbody Rigidbody => _rb;
-
     #endregion PROPERTIES
-    
+
+    #region MONO
+    private void Start()
+    {
+        GameManager.Instance.OnChangePhase += EscapeDirection;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.OnChangePhase -= EscapeDirection;
+    }
+    private void OnApplicationQuit()
+    {
+        GameManager.Instance.OnChangePhase -= EscapeDirection;
+    }
+
+    #endregion MONO
+
     #region METHODES
 
     public abstract void Init(Transform target);
+
+    public abstract void EscapeDirection();
 
     #endregion METHODES
 
