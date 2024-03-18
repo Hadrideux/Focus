@@ -13,7 +13,8 @@ public class GameManager : Singleton<GameManager>
 
     [Header("Timer Phase")]
     [SerializeField] private float _timerPomodoro = 0;
-    [SerializeField] private float _timerRepos = 0;
+    [SerializeField] private float _timerRest = 0;
+    [SerializeField] private float _timerInterlude = 0;
 
     #endregion ATTRIBUTS
 
@@ -26,7 +27,6 @@ public class GameManager : Singleton<GameManager>
     }
 
     public float TimerPomodoro => _timerPomodoro;
-    public float TimerRepos => _timerRepos;
 
     public float CurrentDelay
     {
@@ -34,8 +34,10 @@ public class GameManager : Singleton<GameManager>
         {
             if (CurrentGamePhase == EGamePhase.POMODORO)
                 return _timerPomodoro;
+            else if (CurrentGamePhase == EGamePhase.INTERLUDE)
+                return _timerInterlude;
             else
-                return _timerRepos;
+                return _timerRest;
         }
     }
 

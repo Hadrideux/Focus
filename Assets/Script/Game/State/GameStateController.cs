@@ -25,13 +25,14 @@ public class GameStateController : MonoBehaviour
     {
 
         _stateDic.Add(EGamePhase.POMODORO, new PomodoroState());
-        _stateDic.Add(EGamePhase.REST, new ReposState());
+        _stateDic.Add(EGamePhase.INTERLUDE, new InterludeState());
+        _stateDic.Add(EGamePhase.REST, new RestState());
 
         ChangeState(GameManager.Instance.CurrentGamePhase);
 
         foreach (KeyValuePair<EGamePhase, AGameState> kvp in _stateDic)
         {
-            kvp.Value.Init(_gameController);
+            kvp.Value.Init();
         }
     }
 
@@ -66,13 +67,19 @@ public class GameStateController : MonoBehaviour
     {
         EGamePhase nextState = EGamePhase.NONE;
         
-        if (GameManager.Instance.CurrentGamePhase == EGamePhase.POMODORO)
+        switch (GameManager.Instance.CurrentGamePhase)
         {
-            nextState = EGamePhase.REST;
-        }
-        else
-        {
-            nextState = EGamePhase.POMODORO;
+            case EGamePhase.POMODORO:
+                nextState = EGamePhase.INTERLUDE;
+                break; 
+            
+            case EGamePhase.INTERLUDE:
+                nextState = EGamePhase.REST;
+                break;
+
+            case EGamePhase.REST:
+                
+                break;            
         }
         
         ChangeState(nextState);

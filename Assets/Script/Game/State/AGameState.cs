@@ -4,9 +4,7 @@ using UnityEngine;
 
 public abstract class AGameState : MonoBehaviour
 {
-    protected GameController _gameController = null;
-
-    public abstract void Init(GameController controller);
+    public abstract void Init();
     public abstract void UpdateState();
     public abstract void Enter();
     public abstract void Exit();       

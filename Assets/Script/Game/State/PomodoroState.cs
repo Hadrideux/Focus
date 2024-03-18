@@ -5,9 +5,8 @@ using UnityEngine.XR;
 
 public class PomodoroState : AGameState
 {
-    public override void Init(GameController controller)
+    public override void Init()
     {
-       _gameController = controller;
     }
 
     public override void Enter()
@@ -22,6 +21,5 @@ public class PomodoroState : AGameState
 
     public override void UpdateState()
     {
-        //MeshChangeState(GameManager.Instance.NextState);
     }
 }
