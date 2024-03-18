@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class WobbleBubbleController : AThinkingBubble
@@ -14,6 +15,9 @@ public class WobbleBubbleController : AThinkingBubble
     private int _dirMult = 1;
     private float _timeStamp = 0;
     private Vector3 _dir = Vector3.zero;
+
+    private float _startSpeed = 0;
+
     #endregion Attributs
 
     #region Mono
@@ -22,6 +26,8 @@ public class WobbleBubbleController : AThinkingBubble
     {
         transform.forward = _dir = (_focusPosition.position - transform.position).normalized;
         ChangeDir();
+
+        _startSpeed = _thinkSpeed;
     }
     void Update()
     {
@@ -66,6 +72,7 @@ public class WobbleBubbleController : AThinkingBubble
                 }
 
                 break;
+
             case EGamePhase.REST:
                 _rb.velocity = _escapeDir * _thinkSpeed;
 
@@ -91,6 +98,7 @@ public class WobbleBubbleController : AThinkingBubble
 
     public override void EscapeDirection()
     {
+        _thinkSpeed = _startSpeed;
         _escapeDir = Quaternion.Euler(0, 0, Random.Range(0, 360)) * transform.position;
     }
 

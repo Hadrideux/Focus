@@ -11,6 +11,7 @@ public class AccelerationBubbleController : AThinkingBubble
     [SerializeField] private float _maxSpeed = 10f;
 
     private float _startSpeed = 0;
+
     #endregion Attributs
 
     #region Mono
@@ -44,10 +45,12 @@ public class AccelerationBubbleController : AThinkingBubble
                 Acceleration();
 
                 break;
+
             case EGamePhase.REST:
                 _rb.velocity = _escapeDir * _thinkSpeed;
 
                 break;
+
             case EGamePhase.INTERLUDE:
                 _rb.velocity = Vector3.zero;
 
@@ -65,6 +68,8 @@ public class AccelerationBubbleController : AThinkingBubble
     {
         _thinkSpeed = _startSpeed;
         _escapeDir = Quaternion.Euler(0, 0, Random.Range(0, 360)) * transform.position;
+
+        Debug.Log("EscapeDirection");
     }
     #endregion Methodes
 }

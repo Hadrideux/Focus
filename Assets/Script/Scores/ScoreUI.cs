@@ -31,7 +31,7 @@ public class ScoreUI : MonoBehaviour
 
     public void NewScore()
     {
-    if (GameManager.Instance.CurrentGamePhase == EGamePhase.REPOS)
+    if (GameManager.Instance.CurrentGamePhase == EGamePhase.REST)
     _text.text = ScoreManager.Instance.ComputeScore().ToString();
     }
 }

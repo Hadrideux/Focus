@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 
@@ -6,9 +7,13 @@ public class TeleportBubbleController : AThinkingBubble
 {
     #region Attributs
 
+    [Header("Teleport")]
     [SerializeField] private float _teleportDelay = 0f;
-
     [SerializeField] private float _teleportRadius = 1f;
+
+    private float _startSpeed = 0f;
+
+    private IEnumerator _coroutine = null;
 
     #endregion Attributs
 
@@ -21,7 +26,9 @@ public class TeleportBubbleController : AThinkingBubble
 
     void Start()
     {
-        StartCoroutine(TeleportRoutine());
+        _coroutine = TeleportRoutine();
+        StartCoroutine(_coroutine);
+        _startSpeed = _thinkSpeed;
     }
 
     void Update()
@@ -56,12 +63,15 @@ public class TeleportBubbleController : AThinkingBubble
                 _rb.velocity = dir * _thinkSpeed;
 
                 break;
+
             case EGamePhase.REST:
                 _rb.velocity = _escapeDir * _thinkSpeed;
 
                 break;
+
             case EGamePhase.INTERLUDE:
                 _rb.velocity = Vector3.zero;
+                StopCoroutine(_coroutine);
 
                 break;
         }
@@ -79,10 +89,11 @@ public class TeleportBubbleController : AThinkingBubble
 
         transform.position += direction * _teleportRadius;
     }
-   
+
     public override void EscapeDirection()
     {
-        _escapeDir = Quaternion.Euler(0, 0, Random.Range(0, 360)) * FocusPosition.transform.position;
+        _thinkSpeed = _startSpeed;
+        _escapeDir = Quaternion.Euler(0, 0, Random.Range(0, 360)) * transform.position;
     }
 
     #endregion Methodes
