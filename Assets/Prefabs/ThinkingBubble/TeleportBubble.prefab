@@ -96,10 +96,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c7bffa65d6e3b47b8114d731d43f03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeThink: 3
-  _thinkSpeed: 2
   _focusPosition: {fileID: 0}
   _rb: {fileID: -440654437628477365}
+  _typeThink: 2
+  _thinkSpeed: 5
+  _escapeDir: {x: 0, y: 0, z: 0}
   _teleportDelay: 1
   _teleportRadius: 2
 --- !u!114 &-8927923818414329014

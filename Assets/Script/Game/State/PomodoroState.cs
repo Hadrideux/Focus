@@ -5,10 +5,10 @@ using UnityEngine.XR;
 
 public class PomodoroState : AGameState
 {
-    public override void Init()
+    public override void Init(TimerController controller)
     {
+        _timerController = controller;
     }
-
     public override void Enter()
     {
 
@@ -16,10 +16,11 @@ public class PomodoroState : AGameState
 
     public override void Exit()
     {
-
+        //GameManager.Instance.CurrentGamePhase = EGamePhase.INTERLUDE;
     }
 
     public override void UpdateState()
     {
+        _timerController.Timer();
     }
 }

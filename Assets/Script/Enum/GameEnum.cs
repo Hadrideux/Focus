@@ -11,6 +11,8 @@ public enum ETypeThink
 public enum EGamePhase
 {
     NONE,
+    START,
+    END,
     POMODORO,
     REST,
     INTERLUDE

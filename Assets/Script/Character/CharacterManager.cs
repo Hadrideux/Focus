@@ -34,4 +34,8 @@ public class CharacterManager : Singleton<CharacterManager>
     }
 
     #endregion PROPERTIES
+    public void Init()
+    {
+        Debug.Log("CharacterManger Init");
+    }
 }

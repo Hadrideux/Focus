@@ -24,7 +24,6 @@ public class TimerController : MonoBehaviour
 
     void Update()
     {
-        Timer();
     }
 
     #endregion MONO
@@ -39,14 +38,15 @@ public class TimerController : MonoBehaviour
         return string.Format("{0:00} : {1:00} ", minutes, seconds);
     }
 
-    private void Timer()
+    public void Timer()
     {
         _timeStamp += Time.deltaTime;
         if (_timeStamp >= _phaseDelay)
         {
-            _timeStamp = 0;
             _stateController.ChangeState();
+
             _phaseDelay = GameManager.Instance.CurrentDelay;
+            _timeStamp = 0;
         }
 
         _timerText.text = FormatTime(_timeStamp);

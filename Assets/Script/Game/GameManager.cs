@@ -9,7 +9,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private EGamePhase _currentGamePhase = EGamePhase.NONE;
 
     [Header("Score Phase")]
-    [SerializeField] private int _scoreThink = 0;
+    //[SerializeField] private int _scoreThink = 0;
 
     [Header("Timer Phase")]
     [SerializeField] private float _timerPomodoro = 0;
@@ -34,8 +34,10 @@ public class GameManager : Singleton<GameManager>
         {
             if (CurrentGamePhase == EGamePhase.POMODORO)
                 return _timerPomodoro;
+
             else if (CurrentGamePhase == EGamePhase.INTERLUDE)
                 return _timerInterlude;
+
             else
                 return _timerRest;
         }
@@ -62,10 +64,17 @@ public class GameManager : Singleton<GameManager>
     #endregion EVENTS
 
     public void TriggerPhaseChangeEvent()
-    {
+    {            
         if (_onChangePhase != null)
         {
             _onChangePhase();
         }
+    }
+
+    public void Init()
+    {
+        Debug.Log("GameManager Init");
+
+        SwitchSceneManager.Instance.LoadGameLevel();
     }
 }

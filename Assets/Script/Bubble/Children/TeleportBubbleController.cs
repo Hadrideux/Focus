@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TeleportBubbleController : AThinkingBubble
 {
-    #region Attributs
+    #region ATTRIBUTS
 
     [Header("Teleport")]
     [SerializeField] private float _teleportDelay = 0f;
@@ -15,17 +15,19 @@ public class TeleportBubbleController : AThinkingBubble
 
     private IEnumerator _coroutine = null;
 
-    #endregion Attributs
+    #endregion ATTRIBUTS
 
     #region PROPERTIES
     public float TeleportRadius => _teleportRadius;
 
     #endregion PROPERTIES
 
-    #region Mono
+    #region MONO
 
     void Start()
     {
+        GameManager.Instance.OnChangePhase += EscapeDirection;
+
         _coroutine = TeleportRoutine();
         StartCoroutine(_coroutine);
         _startSpeed = _thinkSpeed;
@@ -34,6 +36,15 @@ public class TeleportBubbleController : AThinkingBubble
     void Update()
     {
         UpdatePosition();
+    }
+
+    public void OnDestroy()
+    {
+        GameManager.Instance.OnChangePhase -= EscapeDirection;
+    }
+    public void OnApplicationQuit()
+    {
+        GameManager.Instance.OnChangePhase -= EscapeDirection;
     }
 
     IEnumerator TeleportRoutine()
@@ -45,14 +56,29 @@ public class TeleportBubbleController : AThinkingBubble
         }
     }
 
-    #endregion Mono
+    #endregion MONO
 
-    #region Methodes
+    #region METHODES
+
+    #region ABSTRACT
 
     public override void Init(Transform target)
     {
         _focusPosition = target;
     }
+
+    public override void EscapeDirection()
+    {
+        Debug.Log("Escape Direction");
+
+        if (GameManager.Instance.CurrentGamePhase == EGamePhase.REST)
+        {
+            _thinkSpeed = _startSpeed;
+            _escapeDir = Quaternion.Euler(0, 0, Random.Range(0, 360)) * transform.position;
+        }
+    }
+
+    #endregion ABSTRACT
 
     public void UpdatePosition()
     {
@@ -90,11 +116,5 @@ public class TeleportBubbleController : AThinkingBubble
         transform.position += direction * _teleportRadius;
     }
 
-    public override void EscapeDirection()
-    {
-        _thinkSpeed = _startSpeed;
-        _escapeDir = Quaternion.Euler(0, 0, Random.Range(0, 360)) * transform.position;
-    }
-
-    #endregion Methodes
+    #endregion METHODES
 }

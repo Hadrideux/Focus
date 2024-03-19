@@ -8,8 +8,7 @@ public class GameStateController : MonoBehaviour
 
     [SerializeField] private Dictionary<EGamePhase, AGameState> _stateDic = new Dictionary<EGamePhase, AGameState>();
 
-    [SerializeField] private GameController _gameController = null;
-
+    [SerializeField] private TimerController _timerController = null;
     #endregion ATTRIBUTS
 
     #region PROPERTIES
@@ -27,27 +26,20 @@ public class GameStateController : MonoBehaviour
         _stateDic.Add(EGamePhase.POMODORO, new PomodoroState());
         _stateDic.Add(EGamePhase.INTERLUDE, new InterludeState());
         _stateDic.Add(EGamePhase.REST, new RestState());
+        _stateDic.Add(EGamePhase.START, new StartState());
+        _stateDic.Add(EGamePhase.END, new EndState());
 
         ChangeState(GameManager.Instance.CurrentGamePhase);
 
         foreach (KeyValuePair<EGamePhase, AGameState> kvp in _stateDic)
         {
-            kvp.Value.Init();
+            kvp.Value.Init(_timerController);
         }
     }
 
     void Update()
     {
         CurrentGameState.UpdateState();
-    }
-
-    private void OnDestroy()
-    {
-        GameManager.Instance.OnChangePhase -= ChangeState;
-    }
-    private void OnApplicationQuit()
-    {
-        GameManager.Instance.OnChangePhase -= ChangeState;
     }
 
     #endregion MONO
@@ -69,6 +61,10 @@ public class GameStateController : MonoBehaviour
         
         switch (GameManager.Instance.CurrentGamePhase)
         {
+            case EGamePhase.START:
+                nextState = EGamePhase.POMODORO;
+                break;
+
             case EGamePhase.POMODORO:
                 nextState = EGamePhase.INTERLUDE;
                 break; 
@@ -78,8 +74,16 @@ public class GameStateController : MonoBehaviour
                 break;
 
             case EGamePhase.REST:
-                
-                break;            
+                nextState = EGamePhase.END;
+                break;
+
+            case EGamePhase.END:
+
+                break;
+
+            default:
+                nextState = EGamePhase.START;
+                break;
         }
         
         ChangeState(nextState);
@@ -89,3 +93,8 @@ public class GameStateController : MonoBehaviour
 
     #endregion METHODE
 }
+
+///
+/// Revoir la changement de phase
+/// Est-ce que les state "Start et End" doive hérité de AGameState
+///

@@ -64,5 +64,6 @@ public class CharacterController : MonoBehaviour
         _currentFocus = _thinkFocus[Random.Range(0, _thinkFocus.Length - 1)];
     }
 
+    
     #endregion METHODE
 }

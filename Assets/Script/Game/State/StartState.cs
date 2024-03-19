@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InterludeState : AGameState
+public class StartState : AGameState
 {
     public override void Init(TimerController controller)
     {
@@ -11,15 +11,16 @@ public class InterludeState : AGameState
 
     public override void Enter()
     {
+
     }
 
     public override void Exit()
     {
-        //GameManager.Instance.CurrentGamePhase = EGamePhase.REST;
+        //GameManager.Instance.CurrentGamePhase = EGamePhase.POMODORO;
     }
 
     public override void UpdateState()
     {
-        _timerController.Timer();
+
     }
 }

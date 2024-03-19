@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class RestState : AGameState
 {
-    public override void Init()
+    public override void Init(TimerController controller)
     {
+        _timerController = controller;
     }
 
     public override void Enter()
@@ -15,11 +16,11 @@ public class RestState : AGameState
 
     public override void Exit()
     {
-
+        //GameManager.Instance.CurrentGamePhase = EGamePhase.END;
     }
 
     public override void UpdateState()
     {
-
+        _timerController.Timer();   
     }
 }

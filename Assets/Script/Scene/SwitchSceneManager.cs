@@ -3,15 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SwitchSceneManager : MonoBehaviour
+public class SwitchSceneManager : Singleton<SwitchSceneManager>
 {
+    private void Start()
+    {
+        CharacterManager.Instance.Init();
+        ScoreManager.Instance.Init();
+        GameManager.Instance.Init();
+        
+    }
+
     public void QuitGame()
     {
         Application.Quit();
     }
 
-    public void StartGameLevel()
+    public void LoadGameLevel()
     {
-        SceneManager.LoadScene("PomodoroScene");
+        SceneManager.LoadScene("ScenePomodoro");
+
+    }
+
+    public void LoadMainLevel()
+    {
+        SceneManager.LoadScene("SceneMainMenu");
+    }
+
+    public void LoadManagerLevel()
+    {
+        SceneManager.LoadScene("SceneManager");
     }
 }

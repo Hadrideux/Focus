@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class AThinkingBubble : MonoBehaviour
@@ -29,28 +26,40 @@ public abstract class AThinkingBubble : MonoBehaviour
     #endregion PROPERTIES
 
     #region MONO
-    private void Start()
-    {
-        GameManager.Instance.OnChangePhase += EscapeDirection;
-    }
 
-    private void OnDestroy()
-    {
-        GameManager.Instance.OnChangePhase -= EscapeDirection;
-    }
-    private void OnApplicationQuit()
-    {
-        GameManager.Instance.OnChangePhase -= EscapeDirection;
-    }
+    //public void Start()
+    //{
+    //    GameManager.Instance.OnChangePhase += EscapeDirection;
+    //}
+
+    //public void OnDestroy()
+    //{
+    //    GameManager.Instance.OnChangePhase -= EscapeDirection;
+    //}
+    //public void OnApplicationQuit()
+    //{
+    //    Debug.Log("OnchangePahse");
+    //    GameManager.Instance.OnChangePhase -= EscapeDirection;
+    //}
 
     #endregion MONO
 
     #region METHODES
 
+    #region ABSTRACTS
+
     public abstract void Init(Transform target);
 
     public abstract void EscapeDirection();
 
+    #endregion ABSTRACTS
+
     #endregion METHODES
 
 }
+
+
+///
+/// Problème de vitesse sur le changement de direction
+/// La fonction EscapeDirection ne s'ajoute pas dans l'event OnChangePhase 
+///

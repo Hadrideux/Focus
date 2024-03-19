@@ -157,10 +157,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00dd9093cce5a644b80208c14798ab73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeThink: 1
-  _thinkSpeed: 0
   _focusPosition: {fileID: 0}
   _rb: {fileID: -2873998812359685133}
+  _typeThink: 3
+  _thinkSpeed: 5
+  _escapeDir: {x: 0, y: 0, z: 0}
   _acceleration: 1
   _maxSpeed: 10
 --- !u!65 &691920991526178361

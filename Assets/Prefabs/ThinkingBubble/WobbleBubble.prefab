@@ -74,14 +74,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 024267b122e304144b692098ce57ffe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeThink: 2
-  _thinkSpeed: 12
   _focusPosition: {fileID: 0}
   _rb: {fileID: 2088714286024524540}
-  _delay: 0.5
+  _typeThink: 1
+  _thinkSpeed: 5
+  _escapeDir: {x: 0, y: 0, z: 0}
   _rotationSpeed: 10
   _maxRotationRand: 60
   _distanceThreshold: 2
+  _delay: 0.5
 --- !u!65 &2121512138219411824
 BoxCollider:
   m_ObjectHideFlags: 0
