@@ -15,6 +15,10 @@ public abstract class AThinkingBubble : MonoBehaviour
     [SerializeField] protected float _thinkSpeed = 0;
     [SerializeField] protected Vector3 _escapeDir = Vector3.zero;
 
+    [Header("Anim and Sound")]
+    [SerializeField] protected AnimationController _Animationcontroller = null;
+    [SerializeField] protected SoundController _soundController = null;
+
     #endregion ATTRIBUTS
 
     #region PROPERTIES
