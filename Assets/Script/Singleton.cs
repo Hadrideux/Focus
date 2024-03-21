@@ -4,21 +4,50 @@ using UnityEngine;
 
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
-    private static T _instance;
 
+    #region Fields
+    private static T _instance;
+    #endregion Fields
+
+    #region Properties
     public static T Instance
     {
-        get 
+        get
         {
             if (_instance == null)
             {
                 _instance = FindObjectOfType<T>();
+
                 if (_instance == null)
                 {
-                    Debug.LogError("Manager instance not found.");
+                    throw new System.Exception(typeof(T) + " Trying to access a nulled instance of a singleton. Exiting.");
                 }
             }
             return _instance;
         }
     }
+    #endregion Properties
+
+    #region Methods
+    #region MonoBehaviour
+    protected virtual void Awake() {
+        DontDestroyOnLoad(this);
+    }
+
+    protected virtual void Start()
+    {
+        
+    }
+
+    protected virtual void OnEnable() { }
+    protected virtual void Update() { }
+    protected virtual void LateUpdate() { }
+    protected virtual void OnDisable() { }
+
+    protected virtual void OnDestroy()
+    {
+        _instance = null;
+    }
+    #endregion MonoBehaviour
+    #endregion Methods
 }
