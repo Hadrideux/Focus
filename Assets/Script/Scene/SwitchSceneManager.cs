@@ -9,8 +9,7 @@ public class SwitchSceneManager : Singleton<SwitchSceneManager>
     {
         CharacterManager.Instance.Init();
         ScoreManager.Instance.Init();
-        GameManager.Instance.Init();
-        
+        GameManager.Instance.Init();        
     }
 
     public void QuitGame()

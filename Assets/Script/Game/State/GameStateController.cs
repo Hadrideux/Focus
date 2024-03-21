@@ -23,6 +23,7 @@ public class GameStateController : MonoBehaviour
     void Start()
     {
 
+        //_stateDic.Add(EGamePhase.POMODORO, gameObject.AddComponent<PomodoroState>());
         _stateDic.Add(EGamePhase.POMODORO, new PomodoroState());
         _stateDic.Add(EGamePhase.INTERLUDE, new InterludeState());
         _stateDic.Add(EGamePhase.REST, new RestState());
