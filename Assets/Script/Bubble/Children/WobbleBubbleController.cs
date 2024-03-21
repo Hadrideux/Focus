@@ -13,6 +13,7 @@ public class WobbleBubbleController : AThinkingBubble
     [SerializeField] private float _rotationSpeed = 5.0f;
     [SerializeField] private float _maxRotationRand = 80;
     [SerializeField] private float _distanceThreshold = 2;
+    [SerializeField] Animator _animator = null;
 
     [Header("Direction Movement")]
     private Vector3 _dir = Vector3.zero;
@@ -120,5 +121,17 @@ public class WobbleBubbleController : AThinkingBubble
     }
 
     #endregion METHODES
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Bubble"))
+        {
+            PlayAnimation();
+        }
+    }
+
+    private void PlayAnimation()
+    {
+        _animator.Play("Blue_Death");
+    }
 
 }

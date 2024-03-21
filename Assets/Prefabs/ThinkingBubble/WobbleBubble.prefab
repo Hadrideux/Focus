@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 988979300734639708}
   m_Layer: 0
   m_Name: S_CircleWobble_Idle_0
-  m_TagString: Untagged
+  m_TagString: Bubble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 2121512138219411824}
   m_Layer: 0
   m_Name: WobbleBubble
-  m_TagString: Untagged
+  m_TagString: Bubble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -190,6 +190,7 @@ MonoBehaviour:
   _rotationSpeed: 5
   _maxRotationRand: 80
   _distanceThreshold: 2
+  _animator: {fileID: 988979300734639708}
   _delay: 0.5
 --- !u!65 &2121512138219411824
 BoxCollider:
