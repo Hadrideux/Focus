@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class ScoreUI : MonoBehaviour
+public class UIController : MonoBehaviour
 {
+    [SerializeField] private GameObject _endMenu = null;
+    [SerializeField] private TextMeshProUGUI _scoreText = null;
 
-    [SerializeField] private TextMeshProUGUI _text = null;
     // Start is called before the first frame update
     void Start()
     {
+        ScoreManager.Instance.EndMenu = _endMenu;
+        ScoreManager.Instance.EndMenu.SetActive(false);
+
         GameManager.Instance.OnChangePhase += NewScore;
     }
 
@@ -31,7 +35,7 @@ public class ScoreUI : MonoBehaviour
 
     public void NewScore()
     {
-    if (GameManager.Instance.CurrentGamePhase == EGamePhase.REST)
-    _text.text = ScoreManager.Instance.ComputeScore().ToString();
+        if (GameManager.Instance.CurrentGamePhase == EGamePhase.END)
+            _scoreText.text = ScoreManager.Instance.ComputeScore().ToString();
     }
 }

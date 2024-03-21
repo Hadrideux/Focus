@@ -13,34 +13,33 @@ public class GameStateController : MonoBehaviour
 
     #region PROPERTIES
 
-    public AGameState CurrentGameState => _stateDic[GameManager.Instance.CurrentGamePhase];
+    public AGameState CurrentGameState { get { return _stateDic[GameManager.Instance.CurrentGamePhase]; } }
 
     #endregion PROPERTIES
 
     #region MONO
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-
-        //_stateDic.Add(EGamePhase.POMODORO, gameObject.AddComponent<PomodoroState>());
-        _stateDic.Add(EGamePhase.POMODORO, new PomodoroState());
-        _stateDic.Add(EGamePhase.INTERLUDE, new InterludeState());
-        _stateDic.Add(EGamePhase.REST, new RestState());
-        _stateDic.Add(EGamePhase.START, new StartState());
-        _stateDic.Add(EGamePhase.END, new EndState());
+        _stateDic.Add(EGamePhase.NONE, gameObject.AddComponent<DummyState>()); //TODO: Fix this piece of shit
+        _stateDic.Add(EGamePhase.START, gameObject.AddComponent<StartState>());
+        _stateDic.Add(EGamePhase.POMODORO, gameObject.AddComponent<PomodoroState>());
+        _stateDic.Add(EGamePhase.INTERLUDE, gameObject.AddComponent<InterludeState>());
+        _stateDic.Add(EGamePhase.REST, gameObject.AddComponent<RestState>());
+        _stateDic.Add(EGamePhase.END, gameObject.AddComponent<EndState>());
 
         ChangeState(GameManager.Instance.CurrentGamePhase);
 
         foreach (KeyValuePair<EGamePhase, AGameState> kvp in _stateDic)
         {
-            kvp.Value.Init(_timerController);
+            kvp.Value?.Init(_timerController);
         }
     }
 
     void Update()
     {
-        CurrentGameState.UpdateState();
+        CurrentGameState?.UpdateState();
     }
 
     #endregion MONO
@@ -51,9 +50,9 @@ public class GameStateController : MonoBehaviour
     {
         Debug.Log("Transition from : " + GameManager.Instance.CurrentGamePhase + " to " + nextState);
 
-        CurrentGameState.Exit();
+        CurrentGameState?.Exit();
         GameManager.Instance.CurrentGamePhase = nextState;
-        CurrentGameState.Enter();
+        CurrentGameState?.Enter();
     }
 
     public void ChangeState()
@@ -62,6 +61,10 @@ public class GameStateController : MonoBehaviour
         
         switch (GameManager.Instance.CurrentGamePhase)
         {
+            //case EGamePhase.NONE:
+            //    nextState = EGamePhase.START;
+            //    break;
+
             case EGamePhase.START:
                 nextState = EGamePhase.POMODORO;
                 break;
@@ -76,10 +79,6 @@ public class GameStateController : MonoBehaviour
 
             case EGamePhase.REST:
                 nextState = EGamePhase.END;
-                break;
-
-            case EGamePhase.END:
-
                 break;
 
             default:

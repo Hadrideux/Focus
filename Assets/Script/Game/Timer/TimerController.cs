@@ -19,7 +19,9 @@ public class TimerController : MonoBehaviour
 
     void Start()
     {
-        _phaseDelay = GameManager.Instance.TimerPomodoro;
+        _stateController.ChangeState();
+
+        _phaseDelay = GameManager.Instance.CurrentDelay;
     }
 
     void Update()

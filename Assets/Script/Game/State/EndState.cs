@@ -6,9 +6,6 @@ using UnityEngine;
 
 public class EndState : AGameState
 {
-    [SerializeField] private GameObject _scoreUI = null;
-    [SerializeField] private TextMeshProUGUI _scoreText = null;
-
     public override void Init(TimerController controller)
     {
         _timerController = controller;
@@ -18,19 +15,7 @@ public class EndState : AGameState
     {
         Time.timeScale = 0;
 
-        _scoreUI.SetActive(true);
-
-        Debug.Log("End");
-
-        if(ScoreManager.Instance.ComputeScore() ==  0)
-        {
-            _scoreText.text = "0";
-        }
-        else
-        {
-            _scoreText.text = "1";
-        }
-        
+        ScoreManager.Instance.EndMenu.SetActive(true); //TODO: NullReferenceException        
     }
 
     public override void Exit()
@@ -40,7 +25,7 @@ public class EndState : AGameState
 
     public override void UpdateState()
     {
-        Debug.Log("End Update");
+
     }
 }
 
