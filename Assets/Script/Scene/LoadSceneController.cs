@@ -4,9 +4,9 @@ using UnityEngine.SceneManagement;
 
 public class LoadSceneController : MonoBehaviour
 {
-    public void LoadScene()
+    public void LoadManagerScene()
     {
-        SwitchSceneManager.Instance.LoadManagerLevel();
+        SceneManager.LoadScene("SceneManager");
     }
 
     public void Quit()
