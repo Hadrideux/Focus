@@ -152,6 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae2f1a8819f87794e96761a02572c1ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _endMenu: {fileID: 0}
+  _scoreText: {fileID: 0}
 --- !u!4 &20401181
 Transform:
   m_ObjectHideFlags: 0
@@ -384,10 +386,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentGamePhase: 0
-  _scoreThink: 0
-  _timerPomodoro: 0
-  _timerRest: 0
-  _timerInterlude: 0
+  _timerPomodoro: 5
+  _timerRest: 5
+  _timerInterlude: 2
+  _timerStart: 1
 --- !u!4 &350133070
 Transform:
   m_ObjectHideFlags: 0

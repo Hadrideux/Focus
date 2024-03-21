@@ -21,6 +21,6 @@ public class StartState : AGameState
 
     public override void UpdateState()
     {
-
+        _timerController.Timer();
     }
 }

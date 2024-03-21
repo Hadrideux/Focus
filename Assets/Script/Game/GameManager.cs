@@ -15,6 +15,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private float _timerPomodoro = 0;
     [SerializeField] private float _timerRest = 0;
     [SerializeField] private float _timerInterlude = 0;
+    [SerializeField] private float _timerStart = 1;
 
     #endregion ATTRIBUTS
 
@@ -32,12 +33,18 @@ public class GameManager : Singleton<GameManager>
     {
         get
         {
-            if (CurrentGamePhase == EGamePhase.POMODORO)
+            if (CurrentGamePhase == EGamePhase.START)
+            {
+                return _timerStart;
+            }
+            else if (CurrentGamePhase == EGamePhase.POMODORO)
+            {
                 return _timerPomodoro;
-
+            }
             else if (CurrentGamePhase == EGamePhase.INTERLUDE)
+            {
                 return _timerInterlude;
-
+            }
             else
                 return _timerRest;
         }
