@@ -9,11 +9,14 @@ public class WobbleBubbleController : AThinkingBubble
 
     private float _startSpeed = 0;
 
+    [SerializeField] private bool _isBlocked = false;
+    [SerializeField] Animator _animator = null;
+    [SerializeField] private string _animName = null;
+
     [Header("Rotation Movement")]
     [SerializeField] private float _rotationSpeed = 5.0f;
     [SerializeField] private float _maxRotationRand = 80;
-    [SerializeField] private float _distanceThreshold = 2;
-    [SerializeField] Animator _animator = null;
+    [SerializeField] private float _distanceThreshold = 2;    
 
     [Header("Direction Movement")]
     private Vector3 _dir = Vector3.zero;
@@ -38,8 +41,27 @@ public class WobbleBubbleController : AThinkingBubble
     }
     void Update()
     {
-        UpdatePosition();
+        if (!_isBlocked)
+        {
+            UpdatePosition();
+        }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Shield"))
+        {
+            _isBlocked = true;
+            _rb.velocity = Vector3.zero;
+
+            PlayAnimation();
+
+            if (_animator.GetCurrentAnimatorStateInfo(0).IsName(_animName))
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
     public void OnDestroy()
     {
         GameManager.Instance.OnChangePhase -= EscapeDirection;
@@ -119,19 +141,13 @@ public class WobbleBubbleController : AThinkingBubble
     {
         return Vector3.Distance(transform.position, _focusPosition.position) <= _distanceThreshold;
     }
-
-    #endregion METHODES
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Bubble"))
-        {
-            PlayAnimation();
-        }
-    }
-
     private void PlayAnimation()
     {
-        _animator.Play("Blue_Death");
+        _animator.Play(_animName);
     }
+
+    #endregion METHODES
+
+
 
 }

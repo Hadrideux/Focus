@@ -12,6 +12,10 @@ public class AccelerationBubbleController : AThinkingBubble
 
     private float _startSpeed = 0;
 
+    [SerializeField] Animator _animator = null;
+    [SerializeField] private bool _isBlocked = false;
+
+    [SerializeField] private string _animName = null;
     #endregion ATTRIBUTS
 
     #region MONO
@@ -25,7 +29,10 @@ public class AccelerationBubbleController : AThinkingBubble
 
     void Update()
     {
-        UpdatePosition();        
+        if (!_isBlocked)
+        {
+            UpdatePosition();
+        }
     }
     public void OnDestroy()
     {
@@ -34,6 +41,22 @@ public class AccelerationBubbleController : AThinkingBubble
     public void OnApplicationQuit()
     {
         GameManager.Instance.OnChangePhase -= EscapeDirection;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Shield"))
+        {
+            _isBlocked = true;
+            _rb.velocity = Vector3.zero;
+
+            PlayAnimation();
+
+            if (_animator.GetCurrentAnimatorStateInfo(0).IsName(_animName))
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
     #endregion MONO
@@ -57,6 +80,7 @@ public class AccelerationBubbleController : AThinkingBubble
     }
 
     #endregion ABSTRACTS
+
     public void UpdatePosition()
     {
         switch (GameManager.Instance.CurrentGamePhase)
@@ -84,6 +108,12 @@ public class AccelerationBubbleController : AThinkingBubble
     {
         _acceleration += Time.deltaTime;
         _thinkSpeed = Mathf.Min(_acceleration, _maxSpeed);        
+    }
+
+
+    private void PlayAnimation()
+    {
+        _animator.Play(_animName);
     }
 
     #endregion Methodes

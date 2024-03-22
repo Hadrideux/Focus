@@ -13,7 +13,12 @@ public class TeleportBubbleController : AThinkingBubble
 
     private float _startSpeed = 0f;
 
-    private IEnumerator _coroutine = null;
+    private IEnumerator _coroutine = null; 
+    
+    [SerializeField] Animator _animator = null;
+    [SerializeField] private bool _isBlocked = false;
+
+    [SerializeField] private string _animName = null;
 
     #endregion ATTRIBUTS
 
@@ -35,7 +40,10 @@ public class TeleportBubbleController : AThinkingBubble
 
     void Update()
     {
-        UpdatePosition();
+        if (!_isBlocked)
+        {
+            UpdatePosition();
+        }
     }
 
     public void OnDestroy()
@@ -53,6 +61,21 @@ public class TeleportBubbleController : AThinkingBubble
         {
             yield return new WaitForSeconds(_teleportDelay);
             TeleportStepwise();
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Shield"))
+        {
+            _isBlocked = true;
+            _rb.velocity = Vector3.zero;
+
+            PlayAnimation();
+
+            if (_animator.GetCurrentAnimatorStateInfo(0).IsName(_animName))
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -114,6 +137,11 @@ public class TeleportBubbleController : AThinkingBubble
         direction = (Quaternion.Euler(0, 0, angle) * direction).normalized;
 
         transform.position += direction * _teleportRadius;
+    }
+
+    private void PlayAnimation()
+    {
+        _animator.Play(_animName);
     }
 
     #endregion METHODES

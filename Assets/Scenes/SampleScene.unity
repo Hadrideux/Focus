@@ -648,10 +648,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d71fbb59c94061d429eeb311ea22cec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentGamePhase: 3
-  _timerPomodoro: 5
+  _currentGamePhase: 0
+  _timerPomodoro: 20
   _timerRest: 5
   _timerInterlude: 5
+  _timerStart: 1
 --- !u!4 &2034098181
 Transform:
   m_ObjectHideFlags: 0
@@ -679,6 +680,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae2f1a8819f87794e96761a02572c1ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _endMenu: {fileID: 1585572503}
+  _scoreText: {fileID: 1561216353}
 --- !u!1001 &6562110270750353477
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -784,9 +787,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1345837834482395132, guid: b76fe378fc9419c4f8d6f10b8ebab7e5, type: 3}
+      propertyPath: m_TagString
+      value: Shield
+      objectReference: {fileID: 0}
+    - target: {fileID: 4402181548147729817, guid: b76fe378fc9419c4f8d6f10b8ebab7e5, type: 3}
+      propertyPath: m_TagString
+      value: Shield
+      objectReference: {fileID: 0}
     - target: {fileID: 7282980276405323095, guid: b76fe378fc9419c4f8d6f10b8ebab7e5, type: 3}
       propertyPath: m_Name
       value: CharacterMind
+      objectReference: {fileID: 0}
+    - target: {fileID: 8348407824868939375, guid: b76fe378fc9419c4f8d6f10b8ebab7e5, type: 3}
+      propertyPath: m_TagString
+      value: Shield
       objectReference: {fileID: 0}
     - target: {fileID: 8954653037183674940, guid: b76fe378fc9419c4f8d6f10b8ebab7e5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -828,6 +843,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8995253288532509620, guid: b76fe378fc9419c4f8d6f10b8ebab7e5, type: 3}
+      propertyPath: m_TagString
+      value: Shield
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -853,6 +872,14 @@ PrefabInstance:
       propertyPath: _timerText
       value: 
       objectReference: {fileID: 1456028916}
+    - target: {fileID: 3407674165729090930, guid: 20bce28197d653340af5b9f04618452c, type: 3}
+      propertyPath: _endMenu
+      value: 
+      objectReference: {fileID: 1585572503}
+    - target: {fileID: 3407674165729090930, guid: 20bce28197d653340af5b9f04618452c, type: 3}
+      propertyPath: _scoreText
+      value: 
+      objectReference: {fileID: 1561216353}
     - target: {fileID: 4471970652846516624, guid: 20bce28197d653340af5b9f04618452c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
